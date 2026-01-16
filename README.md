@@ -49,8 +49,8 @@ Como o projeto é um site estático, não há necessidade de compilação:
 
 ## 📩 Contato
 
-*   **Website:** [raed.com.br](https://raed.com.br)
-*   **E-mail:** contato@raed.com
+*   **Website:** [raed.world](https://raed.world)
+*   **E-mail:** contact@raed.world
 *   **Status:** Online & Pronto para novos desafios.
 
 ---
