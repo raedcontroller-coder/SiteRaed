@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raed | Future Intelligence</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/img/Logo.svg">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/xai.css">
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Model Viewer -->
+    <!-- Model Viewer (Legacy Version for SpecGloss support) -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer@1.12.0/dist/model-viewer.min.js"></script>
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader-content">
+            <img src="assets/img/Logo.svg" alt="Raed" class="loader-logo">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/loader.js"></script>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="assets/img/Logo.svg" alt="Raed Logo">
+            </a>
+            <nav class="nav-links">
+                <a href="#services">NOSSOS SERVIÇOS</a>
+                <a href="#contact">CONTACT</a>
+                <a href="#contact" class="btn-hitech" id="open-contact-modal">Falar com Especialista</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <canvas id="bg-canvas"></canvas>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Software e IA <br>Orientados a <br>Resultado.</h1>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn-primary">
+                        <i class="ph ph-arrow-right"></i>
+                        Iniciar Projeto
+                    </a>
+                    <a href="#services" class="btn-primary"
+                        style="border-color: transparent; color: var(--text-secondary);">
+                        Explorar Nossos Serviços
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-model">
+                <model-viewer src="assets/models/astronaut.glb" camera-controls auto-rotate autoplay environment-image="neutral"
+                    exposure="1" tone-mapping="aces" shadow-intensity="1" camera-orbit="45deg 55deg 20m"
+                    camera-target="0m 2m 0m" disable-zoom interaction-prompt="none" alt="Astronauta 3D">
+                </model-viewer>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container about-container">
+            <div class="about-header">
+                <span class="mono-tag" style="margin-bottom: 1rem; display: block;">Sobre a Raed</span>
+                <h3>Somos uma boutique de desenvolvimento de software focada em agilidade, qualidade e entrega de valor
+                    real.</h3>
+            </div>
+            <div class="about-stats">
+                <div class="stat-item">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Produtos SaaS Lançados</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Projetos Entregues</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Foco em Performance</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section Moved Below -->
+
+    <!-- Capabilities / Services Section -->
+    <section id="services" class="container">
+        <div class="section-header">
+            <span class="mono-tag">Nossos Serviços</span>
+            <h2>Soluções High-End</h2>
+        </div>
+
+        <div class="services-grid">
+            <!-- Automação -->
+            <div class="service-card">
+                <i class="ph ph-gear service-icon"></i>
+                <div>
+                    <h3 class="service-title">Automação de Processos</h3>
+                    <p class="service-desc">Otimize fluxos de trabalho complexos. Eliminamos gargalos operacionais com
+                        sistemas autônomos e inteligentes.</p>
+                </div>
+            </div>
+
+            <!-- SaaS -->
+            <div class="service-card">
+                <i class="ph ph-cloud service-icon"></i>
+                <div>
+                    <h3 class="service-title">SaaS Development</h3>
+                    <p class="service-desc">Arquitetura escalável e multi-tenant. Construímos o próximo unicórnio com
+                        stack moderna e resiliente.</p>
+                </div>
+            </div>
+
+            <!-- Sob Medida -->
+            <div class="service-card">
+                <i class="ph ph-code service-icon"></i>
+                <div>
+                    <h3 class="service-title">Software Sob Medida</h3>
+                    <p class="service-desc">Soluções desenhadas para sua regra de negócio específica. Sem adaptações
+                        forçadas, apenas código preciso.</p>
+                </div>
+            </div>
+
+            <!-- AI Agents -->
+            <div class="service-card">
+                <i class="ph ph-robot service-icon"></i>
+                <div>
+                    <h3 class="service-title">Chatbots & Agentes IA</h3>
+                    <p class="service-desc">Atendimento e operação 24/7 com LLMs de última geração. Inteligência real
+                        aplicada ao customer service.</p>
+                </div>
+            </div>
+
+            <!-- Mobile -->
+            <div class="service-card">
+                <i class="ph ph-device-mobile service-icon"></i>
+                <div>
+                    <h3 class="service-title">Apps Mobile</h3>
+                    <p class="service-desc">Experiência nativa fluida para iOS e Android. Coloque sua empresa no bolso
+                        do seu cliente.</p>
+                </div>
+            </div>
+
+            <!-- Consultoria (Extra para fechar grid ou destaque) -->
+            <div class="service-card">
+                <i class="ph ph-strategy service-icon"></i>
+                <div>
+                    <h3 class="service-title">Consultoria Tech</h3>
+                    <p class="service-desc">Análise profunda de arquitetura e stack para modernizar seu legado
+                        tecnológico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section (Reordered) -->
+    <section id="clients" class="clients-section">
+        <div class="container">
+            <div class="clients-header">
+                <span class="mono-tag">Quem confia na Raed</span>
+            </div>
+            <div class="clients-grid">
+                <div class="client-logo">
+                    <img src="assets/img/Empresas/Mccain.png" alt="McCain">
+                </div>
+                <div class="client-logo">
+                    <img src="assets/img/Empresas/Messier.png" alt="Messier">
+                </div>
+                <div class="client-logo">
+                    <img src="assets/img/Empresas/Vivaterra.png" alt="Vivaterra">
+                </div>
+                <div class="client-logo">
+                    <img src="assets/img/Empresas/lokabike.svg" alt="Lokabike">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="#" class="logo" style="display: block; margin-bottom: 2rem;">
+                    <img src="assets/img/Logo.svg" alt="Raed" style="height: 40px;">
+                </a>
+                <span class="mono-tag">Status: Online</span>
+            </div>
+
+            <div class="footer-col">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#">Sobre Nós</a></li>
+                    <li><a href="#">Carreiras</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacidade</a></li>
+                    <li><a href="#">Termos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Twitter / X</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="mailto:contato@raed.com" style="color: var(--accent);">contato@raed.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <h2>Iniciar Projeto</h2>
+                <p>Conte-nos sobre sua ideia. Retornaremos em breve.</p>
+            </div>
+            <form class="contact-form">
+                <input type="hidden" name="access_key" value="d28a3e9f-d987-4772-ae58-b1e88269a881">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefone</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="idea">Sobre o Projeto</label>
+                    <textarea id="idea" name="idea" rows="4"
+                        placeholder="Descreva brevemente sua ideia ou necessidade..." required></textarea>
+                </div>
+                <button type="submit" class="btn-hitech" style="width: 100%; justify-content: center;">Enviar
+                    Solicitação</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Simple Canvas Script for V2 -->
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        // Resize
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            createParticles();
+        }
+        window.addEventListener('resize', resize);
+
+        function createParticles() {
+            particles = [];
+            // Match V1 density logic: width * height / 15000
+            const numParticles = Math.floor(width * height / 15000);
+
+            for (let i = 0; i < numParticles; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 2
+                });
+            }
+        }
+
+        // Initial call
+        resize();
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Draw connections first (behind dots)
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            ctx.lineWidth = 1;
+
+            particles.forEach((p, index) => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0) p.x = width;
+                if (p.x > width) p.x = 0;
+                if (p.y < 0) p.y = height;
+                if (p.y > height) p.y = 0;
+
+                // Draw Dot
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)'; // White, V1 opacity
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Connect nearby
+                for (let j = index + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            });
+
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Interactive Text Gradient & 3D Lighting
+        const heroTitle = document.querySelector('.hero-content h1');
+        const modelViewer = document.querySelector('model-viewer');
+
+        // Modal Logic
+        const modal = document.getElementById('contact-modal');
+        const openModalBtns = document.querySelectorAll('#open-contact-modal, .btn-primary[href="#contact"]');
+        const closeModalBtn = document.querySelector('.modal-close');
+        const contactForm = document.querySelector('.contact-form');
+
+        openModalBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scroll
+            });
+        });
+
+        const closeModal = () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scroll
+        };
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = contactForm.querySelector('button');
+            const originalText = btn.innerText;
+            
+            btn.innerText = 'Enviando...';
+            btn.disabled = true;
+
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    btn.innerText = 'Sucesso! Respondemos em 24h';
+                    btn.style.backgroundColor = '#4CAF50';
+                    btn.style.boxShadow = '0 0 20px rgba(76, 175, 80, 0.4)';
+                    
+                    const modalHeaderP = contactForm.closest('.modal-content').querySelector('.modal-header p');
+                    const originalPText = modalHeaderP.innerText;
+                    modalHeaderP.innerText = 'Recebemos sua mensagem! Nossa equipe entrará em contato em até 24 horas.';
+                    modalHeaderP.style.color = '#4CAF50';
+                    
+                    setTimeout(() => {
+                        closeModal();
+                        contactForm.reset();
+                        btn.innerText = originalText;
+                        btn.disabled = false;
+                        btn.style.backgroundColor = '';
+                        btn.style.boxShadow = '';
+                        modalHeaderP.innerText = originalPText;
+                        modalHeaderP.style.color = '';
+                    }, 4000);
+                } else {
+                    btn.innerText = 'Erro ao enviar!';
+                    btn.style.backgroundColor = '#ff4444';
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.disabled = false;
+                        btn.style.backgroundColor = '';
+                    }, 3000);
+                }
+            } catch (error) {
+                btn.innerText = 'Erro de Conexão!';
+                btn.style.backgroundColor = '#ff4444';
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                    btn.style.backgroundColor = '';
+                }, 3000);
+            }
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            // Text Gradient Logic
+            if (heroTitle) {
+                const rect = heroTitle.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                heroTitle.style.setProperty('--x', `${x}px`);
+                heroTitle.style.setProperty('--y', `${y}px`);
+            }
+
+            // Astronaut Spotlight Logic (Mask & Lighting)
+            const heroModel = document.querySelector('.hero-model');
+            if (heroModel && modelViewer) {
+                const rect = heroModel.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                heroModel.style.setProperty('--mx', `${x}px`);
+                heroModel.style.setProperty('--my', `${y}px`);
+
+                // Keep the rotation effect too? User said "doesn't influence" implying rotation wasn't enough.
+                // But rotation + mask is better.
+                const xNorm = e.clientX / window.innerWidth;
+                const rotation = xNorm * 360;
+                modelViewer.setAttribute('environment-rotation', `0deg ${rotation}deg 0deg`);
+            }
+        });
+    </script>
+</body>
+
+</html>
