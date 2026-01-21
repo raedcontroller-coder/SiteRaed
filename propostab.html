@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Exclusiva | Raed</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/img/Logo.svg">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/xai.css">
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        /* Login Screen */
+        #login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .login-card {
+            background: #050505;
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            border-radius: 4px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+        }
+
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid var(--accent);
+            border-left: 2px solid var(--accent);
+        }
+
+        .login-card h2 {
+            margin-bottom: 2rem;
+            font-family: var(--font-mono);
+            letter-spacing: 2px;
+            font-size: 1.5rem;
+        }
+
+        /* Hidden Content */
+        #proposal-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+            padding-top: 100px;
+        }
+
+        .proposal-header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .client-tag {
+            color: var(--accent);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .proposal-section {
+            margin-bottom: 6rem;
+        }
+
+        .proposal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .proposal-item {
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .proposal-item:hover {
+            background: rgba(255, 161, 3, 0.02);
+            border-color: rgba(255, 161, 3, 0.2);
+            transform: translateX(5px);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .feature-list li {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-list li::before {
+            content: "→";
+            color: var(--accent);
+            font-family: var(--font-mono);
+        }
+
+        .phase-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .phase-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent);
+            color: black;
+            padding: 4px 12px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .phase-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-box {
+            flex: 1;
+        }
+
+        .stat-box span {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .stat-box strong {
+            display: block;
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin-top: 0.25rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table th, .comparison-table td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-table th {
+            font-family: var(--font-mono);
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .approach-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 4px;
+            text-align: left;
+        }
+
+        .approach-card h4 {
+            color: var(--accent);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .approach-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .chart-container {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 4px;
+            margin-top: 4rem;
+        }
+
+        /* Dashboard Fake Styles - Light Mode */
+        .dashboard-fake {
+            --db-accent: #ffa103; /* Variável dinâmica */
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 4rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+            transition: all 0.5s ease;
+        }
+
+        .db-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .db-logo-placeholder {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            transition: all 0.5s ease;
+            overflow: hidden;
+        }
+
+        .db-logo-placeholder svg {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .db-welcome h2 {
+            font-size: 1.2rem;
+            color: #111827;
+            margin: 0;
+        }
+
+        .db-welcome h2 strong {
+            color: var(--db-accent);
+            transition: color 0.5s ease;
+        }
+
+        .db-grid-top {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .db-stat-card {
+            background: #f9fafb;
+            border: 1px solid #f3f4f6;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .db-stat-card .label {
+            display: block;
+            font-size: 0.7rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .db-stat-card .value {
+            font-size: 1.5rem;
+            color: var(--db-accent);
+            font-weight: 700;
+            transition: color 0.5s ease;
+        }
+
+        .db-main-rect {
+            background: #f9fafb;
+            border: 1px solid #f3f4f6;
+            height: 120px;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .db-bottom-row {
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .db-oval-chart {
+            background: #f9fafb;
+            border: 1px solid #f3f4f6;
+            height: 180px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            padding: 0 4rem;
+        }
+
+        .db-circle-chart {
+            background: #f9fafb;
+            border: 1px solid #f3f4f6;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .db-grid-top { grid-template-columns: 1fr 1fr; }
+            .db-bottom-row { grid-template-columns: 1fr; }
+            .db-oval-chart { border-radius: 20px; padding: 1rem; }
+            .db-circle-chart { margin: 0 auto; }
+        }
+
+        .ai-badge {
+            display: inline-block;
+            background: rgba(255, 161, 3, 0.1);
+            color: var(--accent);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .price-total {
+            background: linear-gradient(180deg, rgba(255, 161, 3, 0.05) 0%, transparent 100%);
+            padding: 5rem 2rem;
+            border: 1px solid var(--border-color);
+            border-top: 2px solid var(--accent);
+            text-align: center;
+            margin: 6rem 0;
+            border-radius: 4px;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Login Section - Ativado conforme solicitado -->
+    <div id="login-overlay">
+        <div class="login-card">
+            <h2>ACESSO RESTRITO</h2>
+            <form id="login-form">
+                <div style="margin-bottom: 1.5rem; text-align: left;">
+                    <label for="username" style="display: block; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 0.5rem;">USUÁRIO</label>
+                    <input type="text" id="username" required style="width: 100%; background: #0c0c0c; border: 1px solid var(--border-color); padding: 1rem; color: #fff; border-radius: 4px;">
+                </div>
+                <div style="margin-bottom: 2rem; text-align: left; position: relative;">
+                    <label for="password" style="display: block; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-secondary); margin-bottom: 0.5rem;">SENHA</label>
+                    <input type="password" id="password" required style="width: 100%; background: #0c0c0c; border: 1px solid var(--border-color); padding: 1rem; color: #fff; border-radius: 4px;">
+                    <button type="button" id="togglePassword" style="position: absolute; right: 10px; bottom: 12px; background: none; border: none; color: var(--text-secondary); cursor: pointer;">
+                        <i id="eyeIcon" class="ph ph-eye" style="font-size: 1.2rem;"></i>
+                    </button>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">ACESSAR PROPOSTA</button>
+                <p id="error-msg" style="color: #ff4444; font-size: 0.8rem; margin-top: 1rem; display: none;">Credenciais inválidas. Tente novamente.</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content (Proposal) -->
+    <div id="proposal-content">
+        <header>
+            <div class="container nav-container">
+                <a href="index.html" class="logo">
+                    <img src="assets/img/Logo.svg" alt="Raed Logo">
+                </a>
+                <span class="mono-tag">Proposta: #2026-001</span>
+            </div>
+        </header>
+
+        <main class="container">
+            <div class="proposal-header">
+                <span class="client-tag">Apresentado para: Fernando</span>
+                <h1 style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1;">OneCore AI <br> <span style="font-size: 0.25em; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 4px; display: block; margin-top: 0.5rem; opacity: 0.6;">(Working Title)</span></h1>
+                <p style="color: var(--text-secondary); max-width: 750px; margin-top: 2rem; font-size: 1.1rem; line-height: 1.6;">
+                    Plataforma unificada, modular e orientada por IA para gestão completa de pequenas e médias empresas, centralizando dados, processos e automações em um único ecossistema.
+                </p>
+            </div>
+
+            <section class="proposal-section">
+                <span class="mono-tag" style="margin-bottom: 2rem; display: block;">Desafios Identificados</span>
+                <div class="proposal-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div style="background: rgba(255, 68, 68, 0.05); padding: 2rem; border-radius: 4px; border: 1px solid rgba(255, 68, 68, 0.1);">
+                        <h4 style="color: #ff4444; margin-bottom: 1rem;">O Problema</h4>
+                        <ul class="feature-list">
+                            <li>Fragmentação de dados e ferramentas desconectadas</li>
+                            <li>Baixa produtividade e alto custo operacional</li>
+                            <li>Pouca inteligência estratégica nos processos</li>
+                            <li>Dependência excessiva de execução humana</li>
+                        </ul>
+                    </div>
+                    <div style="background: rgba(76, 175, 80, 0.05); padding: 2rem; border-radius: 4px; border: 1px solid rgba(76, 175, 80, 0.1);">
+                        <h4 style="color: #4CAF50; margin-bottom: 1rem;">Nossa Solução</h4>
+                        <ul class="feature-list">
+                            <li>Ecossistema 100% modular e unificado</li>
+                            <li>IA nativa em todos os fluxos de trabalho</li>
+                            <li>Automação de ponta a ponta (venda ao pós-venda)</li>
+                            <li>Curva de aprendizado baixa e escalabilidade ágil</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="proposal-section">
+                <span class="mono-tag" style="margin-bottom: 2rem; display: block;">Módulos Estratégicos</span>
+                <div class="proposal-grid">
+                    <!-- CRM -->
+                    <div class="proposal-item">
+                        <div class="ai-badge">IA Alertas Inteligentes</div>
+                        <h3>Gestão de Leads & CRM</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Centralização e organização de histórico.</p>
+                        <ul class="feature-list">
+                            <li>Entrada multicanal (WhatsApp/Email)</li>
+                            <li>Kanban de leads customizável</li>
+                            <li>Histórico completo e Score SPC</li>
+                        </ul>
+                    </div>
+
+                    <!-- Chatbot -->
+                    <div class="proposal-item">
+                        <div class="ai-badge">IA Generativa Nativa</div>
+                        <h3>Chatbot & SAC IA</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Atendimento autônomo e humanizado.</p>
+                        <ul class="feature-list">
+                            <li>Integração nativa com WhatsApp</li>
+                            <li>Base de conhecimento configurável</li>
+                            <li>Resolução automática de problemas</li>
+                        </ul>
+                    </div>
+
+                    <!-- Financeiro -->
+                    <div class="proposal-item">
+                        <div class="ai-badge">IA Projeções & Risco</div>
+                        <h3>Gestão Financeira</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Saúde financeira em tempo real.</p>
+                        <ul class="feature-list">
+                            <li>Contas a pagar/receber e fluxo de caixa</li>
+                            <li>Emissão de NF e Boleto integrado</li>
+                            <li>Análise de margens e metas reais</li>
+                        </ul>
+                    </div>
+
+                    <!-- Logística -->
+                    <div class="proposal-item">
+                        <div class="ai-badge">IA Previsão de Ruptura</div>
+                        <h3>Estoque & Logística</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Controle total de ativos e produtos.</p>
+                        <ul class="feature-list">
+                            <li>Leitor de Código de Barras / QR Code</li>
+                            <li>Importação automática via XML</li>
+                            <li>Geração de remessa e OS de retirada</li>
+                        </ul>
+                    </div>
+
+                    <!-- RH -->
+                    <div class="proposal-item">
+                        <div class="ai-badge">IA Feedback Inteligente</div>
+                        <h3>Pessoas & Cultura</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Engajamento e performance do time.</p>
+                        <ul class="feature-list">
+                            <li>Trilhas de carreira e onboarding</li>
+                            <li>Gamificação por metas e Ponto online</li>
+                            <li>KPIs individuais e de equipe</li>
+                        </ul>
+                    </div>
+
+                    <!-- Marketing -->
+                    <div class="proposal-item">
+                        <div class="ai-badge">IA Copywriting Automático</div>
+                        <h3>Marketing & Retenção</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Ativação constante da base.</p>
+                        <ul class="feature-list">
+                            <li>WhatsApp automático em datas chave</li>
+                            <li>Pesquisas de satisfação integradas</li>
+                            <li>Segmentação inteligente de clientes</li>
+                        </ul>
+                    </div>
+
+                    <!-- Agentes de IA -->
+                    <div class="proposal-item">
+                        <div class="ai-badge">IA Autônoma Operacional</div>
+                        <h3>Agentes de IA</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Funcionários digitais 24/7.</p>
+                        <ul class="feature-list">
+                            <li>Agente de Cobrança amigável</li>
+                            <li>Agente de Vendas proativo</li>
+                            <li>Automação de tarefas repetitivas</li>
+                        </ul>
+                    </div>
+
+                    <!-- Core Platform -->
+                    <div class="proposal-item">
+                        <div class="ai-badge">Segurança Enterprise</div>
+                        <h3>Arquitetura & Core</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">A base sólida para escala.</p>
+                        <ul class="feature-list">
+                            <li>Multi-empresa e Multi-unidade</li>
+                            <li>Permissões avançadas (RBAC)</li>
+                            <li>Arquitetura modular para revenda</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="proposal-section">
+                <span class="mono-tag" style="margin-bottom: 2rem; display: block;">Diferenciais Técnicos</span>
+                <div class="proposal-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <div style="text-align: center; padding: 1rem;">
+                        <i class="ph ph-cpu" style="font-size: 2rem; color: var(--accent);"></i>
+                        <h4 style="margin-top: 1rem;">Processo acima de Pessoas</h4>
+                    </div>
+                    <div style="text-align: center; padding: 1rem;">
+                        <i class="ph ph-lego" style="font-size: 2rem; color: var(--accent);"></i>
+                        <h4 style="margin-top: 1rem;">Modularidade Extrema</h4>
+                    </div>
+                    <div style="text-align: center; padding: 1rem;">
+                        <i class="ph ph-rocket-launch" style="font-size: 2rem; color: var(--accent);"></i>
+                        <h4 style="margin-top: 1rem;">Entregas Incrementais</h4>
+                    </div>
+                </div>
+            </section>
+
+            <section class="proposal-section">
+                <span class="mono-tag" style="margin-bottom: 2rem; display: block;">Análise de Mercado & Whitelabel</span>
+                
+                <!-- Comparativo RAED Section -->
+                <div class="chart-container">
+                    <div style="text-align: left; margin-bottom: 2rem;">
+                        <span class="mono-tag">ANÁLISE DE MERCADO</span>
+                        <h3 style="margin-top: 1rem;">Por que a RAED?</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Comparativo estratégico: RAED vs. Gigantes do Mercado.</p>
+                    </div>
+                    
+                    <div style="overflow-x: auto;">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Critério</th>
+                                    <th>RAED (OneCore AI)</th>
+                                    <th>TOTVS (Protheus)</th>
+                                    <th>SAP (Business One)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Investimento Inicial</strong></td>
+                                    <td style="color: var(--accent);">R$ 250k (Fase 1)</td>
+                                    <td>R$ 100k a R$ 250k+</td>
+                                    <td>R$ 150k a R$ 400k+</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Taxa de Implantação</strong></td>
+                                    <td style="color: var(--accent);">Inclusa</td>
+                                    <td>R$ 50k a R$ 150k</td>
+                                    <td>R$ 80k a R$ 200k</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>IA & Automação</strong></td>
+                                    <td style="color: var(--accent);">Nativa e Agêntica</td>
+                                    <td>Módulo Externo ($)</td>
+                                    <td>Módulo Externo ($)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Customização</strong></td>
+                                    <td style="color: var(--accent);">Total e Flexível</td>
+                                    <td>Limitada</td>
+                                    <td>Rígida e Complexa</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Curva de Aprendizado</strong></td>
+                                    <td style="color: var(--accent);">Baixa (Foco UX)</td>
+                                    <td>Alta (Exige Curso)</td>
+                                    <td>Muito Alta (Complexa)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Propriedade</strong></td>
+                                    <td style="color: var(--accent);">Ativo (Pode Revender)</td>
+                                    <td style="color: #ff4444;">Aluguel</td>
+                                    <td style="color: #ff4444;">Aluguel</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mensalidade / SaaS</strong></td>
+                                    <td style="color: var(--accent);">Custo de Operação</td>
+                                    <td>R$ 3k a R$ 10k+</td>
+                                    <td>R$ 5k a R$ 15k+</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="approach-grid" style="margin-top: 4rem;">
+                        <div class="approach-card">
+                            <h4>IA como Cérebro</h4>
+                            <p>Diferente de sistemas que adaptam IAs externas, o OneCore AI nasce com a inteligência no centro, operando processos de forma autônoma.</p>
+                        </div>
+                        <div class="approach-card">
+                            <h4>Propriedade Intelectual</h4>
+                            <p>Você constrói um ativo. O sistema se torna uma Propriedade Intelectual da sua empresa, podendo ser comercializado como um SaaS próprio.</p>
+                        </div>
+                        <div class="approach-card">
+                            <h4>Agilidade em Fases</h4>
+                            <p>Entregas modulares permitem que você comece a operar e lucrar com vendas enquanto os outros módulos são construídos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Whitelabel Section (Fora da tabela) -->
+                <div style="margin-top: 4rem; padding: 3rem; background: rgba(255, 161, 3, 0.05); border: 1px solid rgba(255, 161, 3, 0.2); border-radius: 4px; text-align: center;">
+                    <i class="ph ph-seal-check" style="font-size: 3.5rem; color: var(--accent); margin-bottom: 1.5rem; display: block;"></i>
+                    <h3 style="color: #fff; margin-bottom: 1rem; font-size: 2rem;">Arquitetura 100% Whitelabel</h3>
+                    <p style="color: var(--text-secondary); max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.1rem;">
+                        O OneCore AI foi projetado para ser um ativo comercializável. Você recebe um sistema <strong style="color: var(--accent);">White-label</strong>, o que permite personalizar a marca, cores e identidade, transformando seu software sob medida em um produto pronto para ser <strong style="color: var(--accent);">revendido a outras empresas</strong>, criando uma nova e poderosa linha de receita recorrente para seu negócio.
+                    </p>
+                </div>
+
+                <!-- Simulation of Whitelabel Dashboard -->
+                <div style="margin-top: 6rem; text-align: center;">
+                    <div class="dashboard-fake">
+                        <!-- Top Header Area -->
+                        <div class="db-header">
+                            <div class="db-logo-placeholder" id="dynamicLogo">
+                                <svg width="40" height="40" viewBox="0 0 40 40" id="logoSvg">
+                                    <rect width="40" height="40" fill="var(--accent)" rx="8"/>
+                                </svg>
+                            </div>
+                            <div class="db-welcome">
+                                <h2>Bem-vindo ao OneCore AI, <strong>Fernando</strong></h2>
+                                <p id="db-company-name" style="font-size: 0.85rem; color: #6b7280; margin-top: 0.25rem; font-family: var(--font-mono); font-weight: 500; transition: all 0.5s ease;">Empresa Alpha Tech</p>
+                            </div>
+                        </div>
+
+                        <!-- 4 Top Stats -->
+                        <div class="db-grid-top">
+                            <div class="db-stat-card">
+                                <span class="label">Vendas Hoje</span>
+                                <span class="value">R$ 12.450</span>
+                            </div>
+                            <div class="db-stat-card">
+                                <span class="label">Novos Leads</span>
+                                <span class="value">48</span>
+                            </div>
+                            <div class="db-stat-card">
+                                <span class="label">Conversão IA</span>
+                                <span class="value">24%</span>
+                            </div>
+                            <div class="db-stat-card">
+                                <span class="label">Status Sistema</span>
+                                <span class="value" style="color: #4CAF50;">ONLINE</span>
+                            </div>
+                        </div>
+
+                        <!-- Long Main Rect -->
+                        <div class="db-main-rect">
+                            <canvas id="dbMainChart"></canvas>
+                        </div>
+
+                        <!-- Bottom Row (Oval + Circle) -->
+                        <div class="db-bottom-row">
+                            <div class="db-oval-chart">
+                                <canvas id="dbOvalChart"></canvas>
+                            </div>
+                            <div class="db-circle-chart">
+                                <canvas id="dbCircleChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Overlay mentioning customization -->
+                        <div style="margin-top: 2rem; border-top: 1px solid #e5e7eb; padding-top: 1rem;">
+                            <p style="font-size: 0.75rem; color: #9ca3af; font-family: var(--font-mono);">
+                                *Interface meramente ilustrativa para demonstração de capacidade Whitelabel. Marca, cores e dados são 100% customizáveis.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="proposal-section">
+                <span class="mono-tag" style="margin-bottom: 2rem; display: block;">Estratégia de Investimento em Duas Etapas</span>
+                <p style="color: var(--text-secondary); margin-bottom: 3rem; max-width: 700px;">
+                    Estruturamos o produto em duas fases claras para garantir validação progressiva, redução de risco e expansão baseada em resultados reais.
+                </p>
+
+                <div class="proposal-grid" style="grid-template-columns: 1fr 1fr;">
+                    <!-- FASE 1 -->
+                    <div class="phase-card">
+                        <div class="phase-badge">Fase 1</div>
+                        <h3>CRM + Gestão de Vendas</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Validação Técnica e de Mercado</p>
+                        
+                        <div class="phase-stats">
+                            <div class="stat-box">
+                                <span>Investimento</span>
+                                <strong>R$ 250.000</strong>
+                            </div>
+                            <div class="stat-box">
+                                <span>Prazo</span>
+                                <strong>5 Meses</strong>
+                            </div>
+                        </div>
+
+                        <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 1rem;">Principais Entregas</h4>
+                        <ul class="feature-list" style="margin-top: 0;">
+                            <li>Core Platform (Arquitetura para Revenda)</li>
+                            <li>CRM + WhatsApp e URA integrada</li>
+                            <li>Chatbot Inteligente e Dashboard Inicial</li>
+                            <li>Fluxo Principal Validado com Clientes Ativos</li>
+                        </ul>
+                    </div>
+
+                    <!-- FASE 2 -->
+                    <div class="phase-card">
+                        <div class="phase-badge" style="background: #4CAF50;">Fase 2</div>
+                        <h3>Operacional & Escala</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Diferenciação e Tração</p>
+                        
+                        <div class="phase-stats">
+                            <div class="stat-box">
+                                <span>Novo Aporte</span>
+                                <strong>R$ 200.000</strong>
+                            </div>
+                            <div class="stat-box">
+                                <span>Prazo</span>
+                                <strong>4 Meses</strong>
+                            </div>
+                        </div>
+
+                        <h4 style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 1rem;">Diferenciais de Escala</h4>
+                        <ul class="feature-list" style="margin-top: 0;">
+                            <li>Gestão de Estoque e Logística Interna</li>
+                            <li>Automação Fiscal e Fluxo de Caixa</li>
+                            <li>Aumento de Ticket Médio e Lock-in</li>
+                            <li>Independência Operacional Completa</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255, 161, 3, 0.03); border: 1px solid rgba(255, 161, 3, 0.1); padding: 2rem; border-radius: 4px; margin-top: 2rem;">
+                    <h4 style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); margin-bottom: 1rem;">REVISÃO FINANCEIRA</h4>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Etapa</th>
+                                <th>Investimento</th>
+                                <th>Prazo</th>
+                                <th>Risco</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Fase 1 — CRM + Gestão de Vendas (Validação Técnica e de Mercado)</td>
+                                <td>R$ 250k</td>
+                                <td>5 meses</td>
+                                <td style="color: #ffa103;">Moderado</td>
+                            </tr>
+                            <tr>
+                                <td>Fase 2 — Operacional (Diferenciação e Tração)</td>
+                                <td>R$ 200k</td>
+                                <td>4 meses</td>
+                                <td style="color: #4CAF50;">Baixo</td>
+                            </tr>
+                            <tr style="border-top: 2px solid var(--border-color);">
+                                <td><strong>Total Acumulado</strong></td>
+                                <td><strong>R$ 450.000</strong></td>
+                                <td><strong>9 Meses</strong></td>
+                                <td><strong>Controlado</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="margin-top: 4rem; text-align: center; padding: 2rem; border-top: 1px solid var(--border-color);">
+                    <h3 style="font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 500; line-height: 1.4; color: var(--text-primary);">
+                        "Não queremos só o seu dinheiro; <br> 
+                        <span style="color: var(--accent);">queremos que o sistema funcione e se pague.</span>"
+                    </h3>
+                </div>
+
+                <div class="approach-grid">
+                    <div class="approach-card">
+                        <h4>Sócio Tecnológico</h4>
+                        <p>Nossa proposta de duas fases foi desenhada para que a RAED cresça junto com você. Se a Fase 1 não trouxer os resultados esperados, nós não teremos sucesso na Fase 2. Nosso compromisso é que o sistema gere a economia e as vendas necessárias para que ele se pague sozinho.</p>
+                    </div>
+                    <div class="approach-card">
+                        <h4>Ativo vs. Despesa</h4>
+                        <p>Diferente de sistemas tradicionais, aqui estamos construindo um ativo da sua empresa. O objetivo é o ROI rápido: projetamos um breakeven onde a economia em processos e novos clientes fazem o investimento retornar integralmente para o seu caixa.</p>
+                    </div>
+                    <div class="approach-card">
+                        <h4>Eficiência Agêntica</h4>
+                        <p>Transformamos custos variáveis de tarefas repetitivas em lucro através da automação. O sistema se paga no momento em que a nossa IA começa a atender, vender e cobrar de forma autônoma, reduzindo a dependência de intervenção humana.</p>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div style="text-align: left; margin-bottom: 2rem;">
+                        <span class="mono-tag">ROI & SUSTENTABILIDADE</span>
+                        <h3 style="margin-top: 1rem;">Projeção de Ponto de Equilíbrio (Breakeven)</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Momento em que o sistema se paga e passa a gerar lucro real.</p>
+                    </div>
+                    <div style="height: 400px; position: relative;">
+                        <canvas id="breakevenChart"></canvas>
+                    </div>
+                    <div style="margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem;">
+                        <div class="stat-box">
+                            <span>Breakeven Estimado</span>
+                            <strong style="color: #fff;">Mês 18</strong>
+                        </div>
+                        <div class="stat-box">
+                            <span>Ticket Médio</span>
+                            <strong style="color: #fff;">R$ 1.000 / mês</strong>
+                        </div>
+                        <div class="stat-box">
+                            <span>Foco de Escala</span>
+                            <strong style="color: #fff;">120+ Clientes</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conteúdo Adicional Estratégico -->
+                <div class="proposal-grid" style="margin-top: 4rem;">
+                    <div class="approach-card" style="border-top: 2px solid var(--accent);">
+                        <h4 style="font-size: 0.8rem;">Dica Estratégica</h4>
+                        <p style="font-style: italic;">"O sistema se paga permitindo que você dobre seu faturamento sem precisar dobrar o tamanho da sua equipe física. Focamos em transformar seu custo em lucro líquido através da automação."</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="proposal-section" style="text-align: center; margin-top: 8rem; border-top: 1px solid var(--border-color); padding-top: 6rem; margin-bottom: 0; position: relative; overflow: hidden; min-height: 600px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <!-- Horizon Glow (Sun effect) -->
+                <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 150%; height: 300px; background: radial-gradient(ellipse at bottom, rgba(255, 161, 3, 0.3) 0%, rgba(255, 161, 3, 0.05) 40%, transparent 70%); z-index: -1; pointer-events: none;"></div>
+
+                <span class="mono-tag" style="margin-bottom: 2rem; display: block;">CONCLUSÃO ESTRATÉGICA</span>
+                <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 2rem;">O Futuro é <span style="color: var(--accent);">Proprietário</span>.</h2>
+                <p style="color: var(--text-secondary); max-width: 800px; margin: 0 auto 4rem; line-height: 1.8; font-size: 1.1rem;">
+                    O <strong>OneCore AI</strong> não é apenas uma ferramenta; é a espinha dorsal tecnológica que permitirá sua empresa escalar sem limites, mantendo o conhecimento e os processos dentro de um <strong>ativo que você possui.</strong> Estamos prontos para transformar essa visão em código, lucro e escala.
+                </p>
+                
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                    <a href="mailto:contact@raed.world" class="btn btn-primary" style="padding: 1.2rem 3rem; text-decoration: none; display: inline-block;">Vamos juntos?</a>
+                </div>
+            </section>
+
+            <footer style="padding: 4rem 0; border-top: 1px solid var(--border-color); margin-top: 4rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <img src="assets/img/Logo.svg" alt="Raed" style="height: 25px;">
+                        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #444;">© 2026 RAED | Future Intelligence</span>
+                    </div>
+                    <div style="display: flex; gap: 2rem;">
+                        <a href="mailto:contact@raed.world" style="color: #444; text-decoration: none; font-size: 0.75rem; font-family: var(--font-mono);">contact@raed.world</a>
+                        <a href="https://www.instagram.com/raed.world/" target="_blank" style="color: #444; text-decoration: none; font-size: 0.75rem; font-family: var(--font-mono);">Instagram</a>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Lógica de Login (Opcional - Ativar quando necessário)
+        const setupLogin = () => {
+            const loginForm = document.getElementById('login-form');
+            if (!loginForm) return;
+
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+            const overlay = document.getElementById('login-overlay');
+            const content = document.getElementById('proposal-content');
+            const errorMsg = document.getElementById('error-msg');
+
+            if (togglePassword) {
+                togglePassword.addEventListener('click', () => {
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+                    eyeIcon.classList.toggle('ph-eye');
+                    eyeIcon.classList.toggle('ph-eye-slash');
+                });
+            }
+
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const user = document.getElementById('username').value;
+                const pass = document.getElementById('password').value;
+
+                if (user === 'fernando' && pass === 'raed123') {
+                    overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                        content.style.display = 'block';
+                        setTimeout(() => {
+                            content.style.opacity = '1';
+                        }, 50);
+                    }, 500);
+                } else {
+                    errorMsg.style.display = 'block';
+                    document.getElementById('password').value = '';
+                }
+            });
+        };
+
+        setupLogin();
+
+        // Background Animation (Copied for consistency)
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            createParticles();
+        }
+        window.addEventListener('resize', resize);
+
+        function createParticles() {
+            particles = [];
+            const numParticles = Math.floor(width * height / 15000);
+            for (let i = 0; i < numParticles; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 2
+                });
+            }
+        }
+        resize();
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            ctx.lineWidth = 1;
+            particles.forEach((p, index) => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0) p.x = width; if (p.x > width) p.x = 0;
+                if (p.y < 0) p.y = height; if (p.y > height) p.y = 0;
+                ctx.fillStyle = 'rgba(255, 161, 3, 0.2)';
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+                for (let j = index + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dx = p.x - p2.x, dy = p.y - p2.y, dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
+                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+                    }
+                }
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Breakeven Chart Initialization
+        const ctxChart = document.getElementById('breakevenChart').getContext('2d');
+        const breakevenChart = new Chart(ctxChart, {
+            type: 'line',
+            data: {
+                labels: ['Mês 0', 'Mês 3', 'Mês 6', 'Mês 9', 'Mês 12', 'Mês 15', 'Mês 18', 'Mês 21', 'Mês 24'],
+                datasets: [
+                    {
+                        label: 'Investimento Acumulado',
+                        data: [45000, 135000, 250000, 385000, 450000, 480000, 510000, 540000, 570000],
+                        borderColor: '#ff4444',
+                        backgroundColor: 'rgba(255, 68, 68, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Receita Acumulada',
+                        data: [0, 0, 10000, 45000, 120000, 250000, 510000, 850000, 1250000],
+                        borderColor: '#4CAF50',
+                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                        ticks: {
+                            color: '#a1a1aa',
+                            callback: function(value) {
+                                return 'R$ ' + value.toLocaleString();
+                            }
+                        }
+                    },
+                    x: {
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                        ticks: { color: '#a1a1aa' }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: { color: '#fff', font: { family: 'JetBrains Mono' } }
+                    },
+                    tooltip: {
+                        backgroundColor: '#050505',
+                        titleColor: '#fff',
+                        bodyColor: '#a1a1aa',
+                        borderColor: '#27272a',
+                        borderWidth: 1,
+                        displayColors: true,
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': R$ ' + context.parsed.y.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Dashboard Fake Charts
+        const dbMainCtx = document.getElementById('dbMainChart').getContext('2d');
+        const dbMainChart = new Chart(dbMainCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
+                datasets: [{
+                    label: 'Performance Semanal',
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                    backgroundColor: 'rgba(255, 161, 3, 0.6)',
+                    borderColor: 'rgba(255, 161, 3, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: { maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { grid: { display: false }, ticks: { color: '#9ca3af' } } } }
+        });
+
+        const dbOvalCtx = document.getElementById('dbOvalChart').getContext('2d');
+        const dbOvalChart = new Chart(dbOvalCtx, {
+            type: 'line',
+            data: {
+                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                datasets: [{
+                    data: [10, 15, 8, 25, 18, 30, 22, 35, 28, 45],
+                    borderColor: '#10b981',
+                    tension: 0.4,
+                    pointRadius: 0,
+                    fill: false,
+                    borderWidth: 3
+                }]
+            },
+            options: { maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { display: false } } }
+        });
+
+        const dbCircleCtx = document.getElementById('dbCircleChart').getContext('2d');
+        const dbCircleChart = new Chart(dbCircleCtx, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [75, 25],
+                    backgroundColor: ['#ffa103', '#e5e7eb'],
+                    borderWidth: 0
+                }]
+            },
+            options: { maintainAspectRatio: false, cutout: '80%', plugins: { legend: { display: false } } }
+        });
+
+        // Dynamic Logo & Colors Logic
+        const logoSvg = document.getElementById('logoSvg');
+        const dashboard = document.querySelector('.dashboard-fake');
+        const companyLabel = document.getElementById('db-company-name');
+        const logos = [
+            { html: '<path d="M10 20 L15 10 L25 30 L30 20" stroke="#3b82f6" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="10" cy="20" r="3" fill="#3b82f6"/><circle cx="30" cy="20" r="3" fill="#3b82f6"/>', color: '#3b82f6', name: 'Empresa Alpha Tech' },
+            { html: '<path d="M5 35 L20 5 L35 35 M12 25 H28" stroke="#10b981" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>', color: '#10b981', name: 'Inova Soluções' },
+            { html: '<path d="M10 20 Q15 10 20 20 T30 20 Q25 30 20 20 T10 20" stroke="#8b5cf6" stroke-width="3" fill="none"/><circle cx="20" cy="20" r="4" fill="#8b5cf6"/>', color: '#8b5cf6', name: 'Nexus Digital' },
+            { html: '<path d="M20 5 L35 15 V25 L20 35 L5 25 V15 Z" fill="#ffa103"/><path d="M20 12 V28 M13 20 H27" stroke="#fff" stroke-width="2" stroke-linecap="round"/>', color: '#ffa103', name: 'Vanguarda Seguros' },
+            { html: '<rect x="8" y="22" width="6" height="13" rx="1" fill="#ec4899"/><rect x="17" y="15" width="6" height="20" rx="1" fill="#ec4899"/><rect x="26" y="5" width="6" height="30" rx="1" fill="#ec4899"/>', color: '#ec4899', name: 'Prime Analytics' },
+            { html: '<path d="M20 8 L32 14 V26 L20 32 L8 26 V14 Z" stroke="#f59e0b" stroke-width="2" fill="none"/><circle cx="20" cy="20" r="6" fill="#f59e0b"/>', color: '#f59e0b', name: 'Modular Systems' }
+        ];
+
+        let currentLogo = 0;
+        setInterval(() => {
+            logoSvg.style.transform = 'scale(0) rotate(-90deg)';
+            logoSvg.style.opacity = '0';
+            companyLabel.style.opacity = '0';
+            companyLabel.style.transform = 'translateX(-10px)';
+            
+            setTimeout(() => {
+                currentLogo = (currentLogo + 1) % logos.length;
+                const activeLogo = logos[currentLogo];
+                
+                // Update Logo
+                logoSvg.innerHTML = activeLogo.html;
+                logoSvg.style.transform = 'scale(1) rotate(0deg)';
+                logoSvg.style.opacity = '1';
+
+                // Update Company Name
+                companyLabel.innerText = activeLogo.name;
+                companyLabel.style.color = activeLogo.color;
+                companyLabel.style.opacity = '1';
+                companyLabel.style.transform = 'translateX(0)';
+
+                // Update Dashboard Colors
+                dashboard.style.setProperty('--db-accent', activeLogo.color);
+
+                // Update Charts
+                dbMainChart.data.datasets[0].backgroundColor = activeLogo.color + '99'; // 60% opacity
+                dbMainChart.data.datasets[0].borderColor = activeLogo.color;
+                dbMainChart.update('none');
+
+                dbOvalChart.data.datasets[0].borderColor = activeLogo.color;
+                dbOvalChart.update('none');
+
+                dbCircleChart.data.datasets[0].backgroundColor = [activeLogo.color, '#e5e7eb'];
+                dbCircleChart.update('none');
+
+            }, 500);
+        }, 3000);
+    </script>
+</body>
+
+</html>
