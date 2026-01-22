@@ -20,6 +20,7 @@
 
         /* Login Screen */
         #login-overlay {
+            display: flex; 
             position: fixed;
             top: 0;
             left: 0;
@@ -27,7 +28,6 @@
             height: 100vh;
             background: #000;
             z-index: 10000;
-            display: flex;
             justify-content: center;
             align-items: center;
             transition: opacity 0.5s ease;
@@ -64,7 +64,7 @@
 
         /* Hidden Content */
         #proposal-selector {
-            display: none;
+            display: none; 
             opacity: 0;
             transition: opacity 1s ease;
             padding-top: 150px;
@@ -513,9 +513,16 @@
     <!-- Main Content (Proposal Selector) -->
     <div id="proposal-selector">
         <div class="container">
-            <img src="assets/img/Logo.svg" alt="Raed" style="height: 40px; margin-bottom: 2rem;">
-            <h1 style="font-family: var(--font-mono); letter-spacing: 4px; font-size: 1.5rem; margin-bottom: 1rem;">CENTRAL DE PROPOSTAS</h1>
-            <p style="color: var(--text-secondary); margin-bottom: 4rem;">Selecione o projeto que deseja visualizar abaixo:</p>
+            <div style="margin-bottom: 4rem;">
+                <p style="font-family: var(--font-mono); color: #fff; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 2rem;">
+                    SEJA BEM-VINDO, <span style="color: var(--accent);">FERNANDO MATIAS BARAUNA</span>
+                </p>
+                <div style="display: flex; align-items: center; justify-content: center; margin-top: 0.5rem;">
+                    <img src="assets/img/Logo.svg" alt="Raed" style="height: 120px; filter: brightness(0) invert(1);">
+                </div>
+                <div style="width: 60px; height: 2px; background: var(--accent); margin: 3rem auto;"></div>
+                <p style="color: var(--text-secondary); font-size: 1.1rem; letter-spacing: 3px; font-family: var(--font-mono);">CENTRAL DE PROPOSTAS ESTRATÉGICAS</p>
+            </div>
             
             <div class="selector-grid">
                 <div class="selector-card" onclick="showProposal('proposal-content')">
@@ -858,6 +865,149 @@
             </section>
 
             <section class="proposal-section">
+                <span class="mono-tag" style="margin-bottom: 2rem; display: block;">Roadmap Tecnológico</span>
+                
+                <div style="overflow-x: auto; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 3rem 2rem; border-radius: 4px;">
+                    <div style="min-width: 1000px;">
+                        <!-- Month Header -->
+                        <div style="display: grid; grid-template-columns: repeat(24, 1fr); margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem;">
+                            <script>
+                                for(let i=1; i<=24; i++) {
+                                    document.write(`<div style="text-align: center; font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-secondary);">M${i}</div>`);
+                                }
+                            </script>
+                        </div>
+
+                        <!-- Gantt Rows -->
+                        <div style="display: grid; grid-template-columns: repeat(24, 1fr); gap: 1rem 0;">
+                            
+                            <!-- Fase 1 -->
+                            <div style="grid-column: 1 / span 5; padding-right: 5px;">
+                                <div style="background: #a7f3d0; color: #064e3b; padding: 12px; font-size: 0.75rem; font-weight: 700; border-radius: 2px; height: 100%; display: flex; align-items: center; box-shadow: 0 4px 15px rgba(167, 243, 208, 0.2);">
+                                    Fase 1: Fundação & CRM
+                                </div>
+                            </div>
+                            <div style="grid-column: 6 / span 19;"></div>
+
+                            <!-- Fase 2 -->
+                            <div style="grid-column: 1 / span 5;"></div>
+                            <div style="grid-column: 6 / span 4; padding-right: 5px;">
+                                <div style="background: #a7f3d0; color: #064e3b; padding: 12px; font-size: 0.75rem; font-weight: 700; border-radius: 2px; height: 100%; display: flex; align-items: center; box-shadow: 0 4px 15px rgba(167, 243, 208, 0.2);">
+                                    Fase 2: Operacional & Estoque
+                                </div>
+                            </div>
+                            <div style="grid-column: 10 / span 15;"></div>
+
+                            <!-- Fase 3 -->
+                            <div style="grid-column: 1 / span 9;"></div>
+                            <div style="grid-column: 10 / span 4; padding-right: 5px;">
+                                <div style="background: #a7f3d0; color: #064e3b; padding: 12px; font-size: 0.75rem; font-weight: 700; border-radius: 2px; height: 100%; display: flex; align-items: center; box-shadow: 0 4px 15px rgba(167, 243, 208, 0.2);">
+                                    Fase 3: Inteligência & IA
+                                </div>
+                            </div>
+                            <div style="grid-column: 14 / span 11;"></div>
+
+                            <!-- Fase 4 -->
+                            <div style="grid-column: 1 / span 13;"></div>
+                            <div style="grid-column: 14 / span 3; padding-right: 5px;">
+                                <div style="background: #fef3c7; color: #78350f; padding: 12px; font-size: 0.75rem; font-weight: 700; border-radius: 2px; height: 100%; display: flex; align-items: center; box-shadow: 0 4px 15px rgba(254, 243, 199, 0.2);">
+                                    Fase 4: Expansão Enterprise
+                                </div>
+                            </div>
+                            <div style="grid-column: 17 / span 8;"></div>
+
+                            <!-- Fase 5 -->
+                            <div style="grid-column: 1 / span 16;"></div>
+                            <div style="grid-column: 17 / span 4; padding-right: 5px;">
+                                <div style="background: #fef3c7; color: #78350f; padding: 12px; font-size: 0.75rem; font-weight: 700; border-radius: 2px; height: 100%; display: flex; align-items: center; box-shadow: 0 4px 15px rgba(254, 243, 199, 0.2);">
+                                    Fase 5: Ecossistema & API
+                                </div>
+                            </div>
+                            <div style="grid-column: 21 / span 4;"></div>
+
+                            <!-- Fase 6 -->
+                            <div style="grid-column: 1 / span 20;"></div>
+                            <div style="grid-column: 21 / span 4;">
+                                <div style="background: #fef3c7; color: #78350f; padding: 12px; font-size: 0.75rem; font-weight: 700; border-radius: 2px; height: 100%; display: flex; align-items: center; box-shadow: 0 4px 15px rgba(254, 243, 199, 0.2);">
+                                    Fase 6: Escala & Whitelabel+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="proposal-section" style="text-align: center; background: linear-gradient(180deg, rgba(255, 161, 3, 0.05) 0%, transparent 100%); padding: 5rem 2rem; border: 1px solid var(--border-color); border-radius: 4px; margin-bottom: 6rem;">
+                <span class="mono-tag" style="margin-bottom: 2rem; display: block;">INVESTIMENTO ESTRATÉGICO</span>
+                <h2 style="font-family: var(--font-mono); font-size: 1.2rem; color: #fff; letter-spacing: 3px; margin-bottom: 1.5rem;">VALOR TOTAL DA NOSSA SOLUÇÃO</h2>
+                <div style="font-size: clamp(3rem, 10vw, 5.5rem); font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 2rem; text-shadow: 0 0 30px rgba(255, 161, 3, 0.3);">
+                    R$ 1.200.000
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+                    <div style="display: inline-block; padding: 1rem 2rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 100px;">
+                        <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">
+                            <span style="color: #4CAF50; font-weight: 700;">15% mais barato</span> que Totvs e <span style="color: #4CAF50; font-weight: 700;">33% mais barato</span> que SAP aproximadamente
+                        </p>
+                    </div>
+                    <div style="display: inline-block; padding: 1rem 2rem; background: rgba(255, 161, 3, 0.1); border: 1px solid var(--accent); border-radius: 100px;">
+                        <p style="font-size: 0.9rem; color: #fff; margin: 0; font-family: var(--font-mono);">
+                            <i class="ph ph-share-network" style="color: var(--accent); margin-right: 0.5rem;"></i> NOSSA SOLUÇÃO PODE SER <strong style="color: var(--accent);">REVENDIDA</strong>. AS OUTRAS NÃO.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <div style="margin-top: 8rem; margin-bottom: 12rem; text-align: center;">
+                <h3 style="font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 700; line-height: 1.1; color: #fff; max-width: 1200px; margin: 0 auto 4rem; letter-spacing: -2px;">
+                    Mas calma....
+                </h3>
+                <h3 style="font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 700; line-height: 1.1; color: var(--text-primary); max-width: 1200px; margin: 0 auto; letter-spacing: -2px;">
+                    "Não queremos só o seu dinheiro; <br> 
+                    <span style="color: var(--accent);">queremos que o sistema funcione e se pague.</span>"
+                </h3>
+            </div>
+
+            <section class="proposal-section" style="margin-top: -4rem;">
+                <span class="mono-tag" style="margin-bottom: 2rem; display: block;">Roadmap Tecnológico 2.0</span>
+                
+                <div style="overflow-x: auto; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 3rem 2rem; border-radius: 4px;">
+                    <div style="min-width: 1000px;">
+                        <!-- Month Header -->
+                        <div style="display: grid; grid-template-columns: repeat(24, 1fr); margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem;">
+                            <script>
+                                for(let i=1; i<=24; i++) {
+                                    document.write(`<div style="text-align: center; font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-secondary);">M${i}</div>`);
+                                }
+                            </script>
+                        </div>
+
+                        <!-- Gantt Rows -->
+                        <div style="display: grid; grid-template-columns: repeat(24, 1fr); gap: 1rem 0;">
+                            
+                            <!-- Fase 1 -->
+                            <div style="grid-column: 1 / span 5; padding-right: 5px;">
+                                <div style="background: #a7f3d0; color: #064e3b; padding: 12px; font-size: 0.75rem; font-weight: 700; border-radius: 2px; height: 100%; display: flex; align-items: center; box-shadow: 0 4px 15px rgba(167, 243, 208, 0.2);">
+                                    Fase 1: Fundação & CRM
+                                </div>
+                            </div>
+                            <div style="grid-column: 6 / span 19;"></div>
+
+                            <!-- Fase 2 -->
+                            <div style="grid-column: 1 / span 5;"></div>
+                            <div style="grid-column: 6 / span 4; padding-right: 5px;">
+                                <div style="background: #a7f3d0; color: #064e3b; padding: 12px; font-size: 0.75rem; font-weight: 700; border-radius: 2px; height: 100%; display: flex; align-items: center; box-shadow: 0 4px 15px rgba(167, 243, 208, 0.2);">
+                                    Fase 2: Operacional & Estoque
+                                </div>
+                            </div>
+                            <div style="grid-column: 10 / span 15;"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="proposal-section">
                 <span class="mono-tag" style="margin-bottom: 2rem; display: block;">Estratégia de Investimento em Duas Etapas</span>
                 <p style="color: var(--text-secondary); margin-bottom: 3rem; max-width: 700px;">
                     Estruturamos o produto em duas fases claras para garantir validação progressiva, redução de risco e expansão baseada em resultados reais.
@@ -951,13 +1101,6 @@
                     </table>
                 </div>
 
-                <div style="margin-top: 4rem; text-align: center; padding: 2rem; border-top: 1px solid var(--border-color);">
-                    <h3 style="font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 500; line-height: 1.4; color: var(--text-primary);">
-                        "Não queremos só o seu dinheiro; <br> 
-                        <span style="color: var(--accent);">queremos que o sistema funcione e se pague.</span>"
-                    </h3>
-                </div>
-
                 <div class="approach-grid">
                     <div class="approach-card">
                         <h4>Sócio Tecnológico</h4>
@@ -1035,6 +1178,8 @@
                 </div>
             </footer>
         </main>
+    </div>
+
     <!-- Sistema Recicla Content -->
     <div id="recicla-content">
         <button class="back-to-selector" onclick="backToSelector()">
@@ -1051,15 +1196,222 @@
         <main class="container">
             <div class="proposal-header">
                 <span class="client-tag">Apresentado para: Fernando</span>
-                <h1 style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1;">Sistema Recicla <br> <span style="font-size: 0.25em; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 4px; display: block; margin-top: 0.5rem; opacity: 0.6;">(Working Title)</span></h1>
+                <img src="assets/img/logoBfilters.png" alt="BFilters" style="height: 100px; margin-bottom: 2.5rem; display: block;">
+                <h1 style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1;">Sistema Recicla</h1>
                 <p style="color: var(--text-secondary); max-width: 750px; margin-top: 2rem; font-size: 1.1rem; line-height: 1.6;">
-                    Solução inteligente para gestão de resíduos e logística reversa, focada em eficiência operacional e sustentabilidade.
+                    Plataforma de logística reversa e rastreabilidade industrial 4.0. Transformando resíduos de filtragem (Areia, Resina e Carvão) em ativos ambientais via Blockchain e WhatsApp.
                 </p>
             </div>
-            <section class="proposal-section" style="text-align: center; padding: 10rem 0;">
-                <i class="ph ph-wrench" style="font-size: 4rem; color: var(--accent); margin-bottom: 2rem; display: block;"></i>
-                <h2 style="font-family: var(--font-mono);">EM DESENVOLVIMENTO</h2>
-                <p style="color: var(--text-secondary); margin-top: 1rem;">O detalhamento estratégico deste produto está sendo finalizado.</p>
+
+            <section class="proposal-section">
+                <span class="mono-tag" style="margin-bottom: 2rem; display: block;">Inteligência em Logística Industrial</span>
+                <div class="proposal-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div style="background: rgba(255, 161, 3, 0.05); padding: 2rem; border-radius: 4px; border: 1px solid rgba(255, 161, 3, 0.1);">
+                        <h4 style="color: var(--accent); margin-bottom: 1rem;">Infraestrutura Operacional</h4>
+                        <ul class="feature-list">
+                            <li>Otimização de rotas em tempo real</li>
+                            <li>Gestão de frotas e motoristas</li>
+                            <li>Monitoramento de impacto ambiental</li>
+                            <li>Interface administrativa robusta</li>
+                        </ul>
+                    </div>
+                    <div style="background: rgba(0, 150, 255, 0.05); padding: 2rem; border-radius: 4px; border: 1px solid rgba(0, 150, 255, 0.1);">
+                        <h4 style="color: #0096ff; margin-bottom: 1rem;">A Inovação BFilters</h4>
+                        <ul class="feature-list">
+                            <li>Input Zero-App (100% WhatsApp)</li>
+                            <li>Rastreabilidade via QR Code Único</li>
+                            <li>Blockchain para Créditos de Carbono</li>
+                            <li>Vínculo com Certificado de Origem</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="proposal-section">
+                <span class="mono-tag" style="margin-bottom: 2rem; display: block;">Simulação de Interface (Dashboard BFilters)</span>
+                <p style="color: var(--text-secondary); margin-bottom: 3rem; max-width: 700px;">
+                    Visualização da plataforma administrativa baseada em nossa tecnologia de gestão logística, adaptada para o controle de resíduos industriais.
+                </p>
+
+                <!-- Dashboard BFilters - Industrial Light Mode -->
+                <div class="dashboard-fake" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+                    <!-- Top Header Area -->
+                    <div class="db-header" style="border-bottom: 1px solid #e2e8f0; padding-bottom: 1.5rem; margin-bottom: 2rem;">
+                        <div style="margin-right: 1.5rem;">
+                            <img src="assets/img/logoBfilters.png" alt="BFilters" style="height: 45px; display: block;">
+                        </div>
+                        <div class="db-welcome">
+                            <h2 style="font-size: 1.1rem; color: #1e293b;">Olá, <strong style="color: #0096ff;">Fernando</strong>. Bem-vindo ao BFilters.</h2>
+                            <p style="font-size: 0.8rem; color: #64748b; font-family: var(--font-mono);">Monitoramento Industrial em Tempo Real</p>
+                        </div>
+                        <div style="margin-left: auto; display: flex; gap: 1rem;">
+                            <div style="padding: 0.5rem 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 0.7rem; color: #64748b; font-family: var(--font-mono);">
+                                <i class="ph ph-shield-check" style="color: #10b981;"></i> BLOCKCHAIN: ACTIVE
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4 Top Stats -->
+                    <div class="db-grid-top">
+                        <div class="db-stat-card" style="background: #fff; border-color: #e2e8f0;">
+                            <span class="label" style="color: #64748b;">Coletas (Mês)</span>
+                            <span class="value" style="color: #0096ff;">154</span>
+                        </div>
+                        <div class="db-stat-card" style="background: #fff; border-color: #e2e8f0;">
+                            <span class="label" style="color: #64748b;">Volume Total (kg)</span>
+                            <span class="value" style="color: #0096ff;">12.840</span>
+                        </div>
+                        <div class="db-stat-card" style="background: #fff; border-color: #e2e8f0;">
+                            <span class="label" style="color: #64748b;">Créditos Gerados</span>
+                            <span class="value" style="color: #10b981;">842.50</span>
+                        </div>
+                        <div class="db-stat-card" style="background: #fff; border-color: #e2e8f0;">
+                            <span class="label" style="color: #64748b;">Eficiência Logística</span>
+                            <span class="value" style="color: #0096ff;">98.2%</span>
+                        </div>
+                    </div>
+
+                    <!-- Main Content Row -->
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+                        <!-- Evolution Chart -->
+                        <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem;">
+                            <p style="font-size: 0.75rem; font-family: var(--font-mono); color: #64748b; margin-bottom: 1.5rem; text-transform: uppercase;">Evolução de Coleta (Resina vs Carvão)</p>
+                            <div style="height: 250px;">
+                                <canvas id="bfMainChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Impact Cards -->
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="background: #0096ff; border-radius: 8px; padding: 1.5rem; color: #fff;">
+                                <i class="ph ph-leaf" style="font-size: 1.5rem; margin-bottom: 1rem; display: block;"></i>
+                                <span style="font-size: 0.7rem; text-transform: uppercase; font-family: var(--font-mono); opacity: 0.8;">Carbono Compensado</span>
+                                <p style="font-size: 1.5rem; font-weight: 700; margin-top: 0.25rem;">34.2 Tons</p>
+                            </div>
+                            <div style="background: #1e293b; border-radius: 8px; padding: 1.5rem; color: #fff;">
+                                <i class="ph ph-cube" style="font-size: 1.5rem; margin-bottom: 1rem; display: block;"></i>
+                                <span style="font-size: 0.7rem; text-transform: uppercase; font-family: var(--font-mono); opacity: 0.8;">Tokens em Blockchain</span>
+                                <p style="font-size: 1.5rem; font-weight: 700; margin-top: 0.25rem;">1.250 MTX</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom History Row -->
+                    <div style="margin-top: 1.5rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem;">
+                        <p style="font-size: 0.75rem; font-family: var(--font-mono); color: #64748b; margin-bottom: 1.5rem; text-transform: uppercase;">Histórico de Coletas Recentes (via WhatsApp)</p>
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div style="display: flex; align-items: center; padding: 0.75rem; background: #f8fafc; border-radius: 4px; border: 1px solid #f1f5f9;">
+                                <span style="width: 8px; height: 8px; background: #10b981; border-radius: 50%; margin-right: 1rem;"></span>
+                                <div style="flex: 1;">
+                                    <p style="font-size: 0.85rem; color: #1e293b; font-weight: 600;">Indústria Metalúrgica SA</p>
+                                    <p style="font-size: 0.7rem; color: #64748b;">Coleta de Resina - 450kg</p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <p style="font-size: 0.75rem; color: #1e293b; font-family: var(--font-mono);">CONCLUÍDO</p>
+                                    <p style="font-size: 0.65rem; color: #64748b;">Há 15 min</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; padding: 0.75rem; background: #f8fafc; border-radius: 4px; border: 1px solid #f1f5f9;">
+                                <span style="width: 8px; height: 8px; background: #ffa103; border-radius: 50%; margin-right: 1rem;"></span>
+                                <div style="flex: 1;">
+                                    <p style="font-size: 0.85rem; color: #1e293b; font-weight: 600;">Filtros Express Ltda</p>
+                                    <p style="font-size: 0.7rem; color: #64748b;">Coleta de Areia - 1.200kg</p>
+                                </div>
+                                <div style="text-align: right;">
+                                    <p style="font-size: 0.75rem; color: #ffa103; font-family: var(--font-mono);">A CAMINHO</p>
+                                    <p style="font-size: 0.65rem; color: #64748b;">Há 42 min</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="proposal-section">
+                <span class="mono-tag" style="margin-bottom: 2rem; display: block;">Diferenciais Estratégicos</span>
+                <div style="overflow-x: auto;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Recurso</th>
+                                <th>Modelo Tradicional</th>
+                                <th>Sistema Recicla (BFilters)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Barreira de Entrada</strong></td>
+                                <td>Instalar App / Login Complexo</td>
+                                <td style="color: var(--accent);">WhatsApp (Zero Atrito)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Confiabilidade</strong></td>
+                                <td>Planilhas / Recibos Manuais</td>
+                                <td style="color: var(--accent);">Blockchain (Imutável)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rastreabilidade</strong></td>
+                                <td>Apenas data e volume</td>
+                                <td style="color: var(--accent);">QR Code + Lote de Origem</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Valor Agregado</strong></td>
+                                <td>Apenas Descarte</td>
+                                <td style="color: var(--accent);">Geração de Créditos de Carbono</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="proposal-section">
+                <span class="mono-tag" style="margin-bottom: 2rem; display: block;">Estratégia de Implementação</span>
+                <div class="proposal-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="phase-card">
+                        <div class="phase-badge">Fase 1</div>
+                        <h3>MVP Logístico & Bot</h3>
+                        <div class="phase-stats">
+                            <div class="stat-box">
+                                <span>Status</span>
+                                <strong>Tecnologia Proprietária</strong>
+                            </div>
+                            <div class="stat-box">
+                                <span>Foco</span>
+                                <strong>Operação</strong>
+                            </div>
+                        </div>
+                        <ul class="feature-list">
+                            <li>Integração Bot WhatsApp</li>
+                            <li>Core Administrativo (Rotas/Admin)</li>
+                            <li>Sistema de Etiquetas QR Code</li>
+                        </ul>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-badge" style="background: #4CAF50;">Fase 2</div>
+                        <h3>Inteligência ESG & Tokenização</h3>
+                        <div class="phase-stats">
+                            <div class="stat-box">
+                                <span>Status</span>
+                                <strong>Inovação</strong>
+                            </div>
+                            <div class="stat-box">
+                                <span>Foco</span>
+                                <strong>Compliance</strong>
+                            </div>
+                        </div>
+                        <ul class="feature-list">
+                            <li>Integração com Blockchain</li>
+                            <li>Smart Contracts de Carbono</li>
+                            <li>Dashboard de Auditoria para Clientes</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="proposal-section" style="text-align: center; margin-top: 8rem; border-top: 1px solid var(--border-color); padding-top: 6rem; margin-bottom: 0; position: relative; overflow: hidden; min-height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 150%; height: 300px; background: radial-gradient(ellipse at bottom, rgba(76, 175, 80, 0.2) 0%, rgba(76, 175, 80, 0.05) 40%, transparent 70%); z-index: -1; pointer-events: none;"></div>
+                <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 2rem;">Logística que gera <span style="color: #4CAF50;">Crédito</span>.</h2>
+                <a href="mailto:contact@raed.world" class="btn btn-primary" style="padding: 1.2rem 3rem; text-decoration: none; display: inline-block;">Vamos juntos?</a>
             </section>
 
             <footer style="padding: 4rem 0; border-top: 1px solid var(--border-color); margin-top: 4rem;">
@@ -1098,11 +1450,204 @@
                     Projeto de experiência imersiva e interativa para eventos de tecnologia, utilizando IA e interfaces avançadas.
                 </p>
             </div>
-            <section class="proposal-section" style="text-align: center; padding: 10rem 0;">
-                <i class="ph ph-wrench" style="font-size: 4rem; color: var(--accent); margin-bottom: 2rem; display: block;"></i>
-                <h2 style="font-family: var(--font-mono);">EM DESENVOLVIMENTO</h2>
-                <p style="color: var(--text-secondary); margin-top: 1rem;">O detalhamento estratégico deste produto está sendo finalizado.</p>
+            <section class="proposal-section">
+                <span class="mono-tag" style="margin-bottom: 2rem; display: block;">Experiência Imersiva & Interatividade</span>
+                <p style="color: var(--text-secondary); max-width: 800px; margin-bottom: 4rem; font-size: 1.1rem; line-height: 1.8;">
+                    Nossa visão para a <strong>Feira de Tecnologia</strong> é criar experiências únicas que aproximem sua marca do público final. Não apenas apresentando tecnologia, mas permitindo que as pessoas <strong>sintam</strong> o poder da inovação em suas próprias mãos.
+                </p>
+
+                <div class="proposal-grid" style="grid-template-columns: 1.2fr 0.8fr; align-items: center; gap: 4rem;">
+                    <div>
+                        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2;">O Desafio <span style="color: var(--accent);">High Strike IA</span></h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6;">
+                            Reinterpretamos o clássico "Teste de Força" (High Strike) das feiras antigas para simbolizar a nova era da produtividade. Trata-se de uma metáfora física do impacto da Inteligência Artificial no trabalho humano.
+                        </p>
+                        
+                        <div style="margin-bottom: 3rem;">
+                            <h4 style="margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; font-family: var(--font-mono); font-size: 1rem; color: #fff; text-transform: uppercase; letter-spacing: 2px;">
+                                <i class="ph ph-hammer" style="color: var(--accent); font-size: 1.5rem;"></i> O Martelo de Duas Faces
+                            </h4>
+                            
+                            <div style="display: grid; gap: 1.5rem;">
+                                <!-- Lado Vermelho -->
+                                <div style="background: rgba(255, 68, 68, 0.05); border: 1px solid rgba(255, 68, 68, 0.1); border-left: 4px solid #ff4444; padding: 1.5rem; border-radius: 4px;">
+                                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                        <span style="width: 12px; height: 12px; background: #ff4444; border-radius: 50%; box-shadow: 0 0 10px rgba(255, 68, 68, 0.5);"></span>
+                                        <strong style="color: #ff4444; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Lado Vermelho (Trabalho Manual)</strong>
+                                    </div>
+                                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                                        Simboliza o esforço isolado. Ao bater com este lado, o peso sobe apenas até a metade, mostrando as limitações naturais da produtividade sem tecnologia.
+                                    </p>
+                                </div>
+
+                                <!-- Lado Azul -->
+                                <div style="background: rgba(0, 150, 255, 0.05); border: 1px solid rgba(0, 150, 255, 0.1); border-left: 4px solid #0096ff; padding: 1.5rem; border-radius: 4px;">
+                                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                        <span style="width: 12px; height: 12px; background: #0096ff; border-radius: 50%; box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);"></span>
+                                        <strong style="color: #0096ff; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Lado Azul (Trabalho com IA)</strong>
+                                    </div>
+                                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                                        Simboliza o potencial da Inteligência Artificial. Quando o martelo atinge a base com a face azul, a força é multiplicada instantaneamente.
+                                    </p>
+                                </div>
+
+                                <!-- Sinergia Total -->
+                                <div style="background: linear-gradient(90deg, rgba(255, 161, 3, 0.1) 0%, rgba(255, 161, 3, 0.02) 100%); border: 1px solid rgba(255, 161, 3, 0.2); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 4px;">
+                                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                        <i class="ph ph-intersect" style="color: var(--accent); font-size: 1.2rem;"></i>
+                                        <strong style="color: #fff; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Sinergia Total</strong>
+                                    </div>
+                                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                                        O resultado final (o sino tocando) só é garantido quando o esforço é potencializado pela ferramenta correta (IA), gerando uma força absurda e impossível de alcançar apenas com o trabalho manual.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(0, 150, 255, 0.05); border: 1px solid rgba(0, 150, 255, 0.1); padding: 1.5rem; border-radius: 4px;">
+                            <h5 style="color: #0096ff; margin-bottom: 0.5rem; font-size: 0.8rem; text-transform: uppercase; font-family: var(--font-mono);">Segredo Tecnológico</h5>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">
+                                O lado azul do martelo contém imãs ocultos de alta potência. A base da máquina possui sensores magnéticos de precisão que detectam instantaneamente qual lado está sendo utilizado, ajustando a resistência da "puc" para simular a multiplicação de força em tempo real.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="position: relative;">
+                        <div style="position: absolute; top: -20px; left: -20px; width: 100px; height: 100px; background: radial-gradient(circle, rgba(255, 161, 3, 0.2) 0%, transparent 70%); z-index: -1;"></div>
+                        <img src="assets/img/highstrike.png" alt="High Strike IA Experience" style="width: 100%; border-radius: 12px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);">
+                        <div style="margin-top: 1.5rem; text-align: center;">
+                            <span class="mono-tag" style="font-size: 0.6rem; opacity: 0.5;">CONCEITO DE HARDWARE INTERATIVO - RAED</span>
+                        </div>
+                    </div>
+                </div>
             </section>
+
+            <section class="proposal-section" style="text-align: center; background: linear-gradient(180deg, rgba(0, 150, 255, 0.05) 0%, transparent 100%); padding: 6rem 2rem; border-radius: 8px; border: 1px solid rgba(0, 150, 255, 0.1);">
+                <span class="mono-tag" style="margin-bottom: 2rem; display: block;">POR QUE ESTA EXPERIÊNCIA?</span>
+                <div class="proposal-grid" style="grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem;">
+                    <div style="text-align: left; padding: 1.5rem; background: rgba(255,255,255,0.02); border-radius: 4px;">
+                        <i class="ph ph-users-three" style="font-size: 2rem; color: #0096ff; margin-bottom: 1rem; display: block;"></i>
+                        <h4 style="margin-bottom: 0.5rem;">Engajamento Viral</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary);">A natureza competitiva e visual do "High Strike" atrai multidões e gera momentos perfeitos para redes sociais.</p>
+                    </div>
+                    <div style="text-align: left; padding: 1.5rem; background: rgba(255,255,255,0.02); border-radius: 4px;">
+                        <i class="ph ph-brain" style="font-size: 2rem; color: #0096ff; margin-bottom: 1rem; display: block;"></i>
+                        <h4 style="margin-bottom: 0.5rem;">Educação Lúdica</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary);">O público entende o conceito de "IA como multiplicador de força" sem precisar ler manuais ou assistir palestras.</p>
+                    </div>
+                    <div style="text-align: left; padding: 1.5rem; background: rgba(255,255,255,0.02); border-radius: 4px;">
+                        <i class="ph ph-lightning" style="font-size: 2rem; color: #0096ff; margin-bottom: 1rem; display: block;"></i>
+                        <h4 style="margin-bottom: 0.5rem;">Memorabilidade</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Experiências físicas são lembradas por muito mais tempo do que apresentações digitais passivas.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="proposal-section">
+                <span class="mono-tag" style="margin-bottom: 2rem; display: block;">Experiência Imersiva & Digital</span>
+                
+                <div class="proposal-grid" style="grid-template-columns: 0.8fr 1.2fr; align-items: center; gap: 4rem;">
+                    <div style="order: 2;">
+                        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2;">Partículas de <span style="color: var(--accent);">Inteligência</span></h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6;">
+                            Uma demonstração de interface gestual avançada, onde o limite entre o físico e o digital desaparece. Utilizando visão computacional de última geração, transformamos movimentos humanos em comandos digitais fluidos.
+                        </p>
+
+                        <div style="display: grid; gap: 1.5rem;">
+                            <div style="background: rgba(255, 255, 255, 0.03); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 4px;">
+                                <h4 style="margin-bottom: 0.5rem; font-size: 0.9rem; color: #fff;">Visão Computacional (MediaPipe)</h4>
+                                <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5;">
+                                    A câmera identifica 21 pontos de articulação da mão em tempo real, permitindo uma interação precisa sem a necessidade de sensores físicos ou wearables.
+                                </p>
+                            </div>
+
+                            <div style="background: rgba(255, 255, 255, 0.03); border-left: 4px solid #0096ff; padding: 1.5rem; border-radius: 4px;">
+                                <h4 style="margin-bottom: 0.5rem; font-size: 0.9rem; color: #fff;">Manipulação de Dados</h4>
+                                <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5;">
+                                    As partículas simbolizam o fluxo de dados da empresa. O usuário pode expandir, condensar e mudar a forma da "inteligência" apenas com gestos de abrir e fechar as mãos.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                            <div style="padding: 0.75rem 1.5rem; background: rgba(0, 150, 255, 0.1); border: 1px solid #0096ff; border-radius: 100px; display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="ph ph-hand-pointing" style="color: #0096ff;"></i>
+                                <span style="font-size: 0.75rem; font-family: var(--font-mono); color: #0096ff;">Gesto Aberto: Expansão</span>
+                            </div>
+                            <div style="padding: 0.75rem 1.5rem; background: rgba(255, 161, 3, 0.1); border: 1px solid var(--accent); border-radius: 100px; display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="ph ph-hand-fist" style="color: var(--accent);"></i>
+                                <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent);">Gesto Fechado: Transformação</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="order: 1; position: relative; background: #000; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); aspect-ratio: 4/3; box-shadow: 0 40px 80px rgba(0,0,0,0.8);">
+                        <!-- Demo Simulation -->
+                        <div style="position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(255, 161, 3, 0.1) 0%, transparent 70%);"></div>
+                        
+                        <!-- Floating Particles Simulation (CSS Animation) -->
+                        <div id="particle-demo-viewport" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
+                            <div style="position: relative; width: 300px; height: 300px;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; border: 2px dashed rgba(255, 161, 3, 0.3); border-radius: 50%; animation: pulse-demo 4s infinite;"></div>
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 150px; height: 150px; border: 1px dashed rgba(0, 150, 255, 0.2); border-radius: 50%; animation: rotate-demo 10s linear infinite;"></div>
+                                
+                                <script>
+                                    for(let i=0; i<40; i++) {
+                                        const size = Math.random() * 3 + 1;
+                                        const x = Math.random() * 100;
+                                        const y = Math.random() * 100;
+                                        const delay = Math.random() * 5;
+                                        document.write(`
+                                            <div style="
+                                                position: absolute; 
+                                                width: ${size}px; 
+                                                height: ${size}px; 
+                                                background: ${Math.random() > 0.5 ? 'var(--accent)' : '#0096ff'}; 
+                                                border-radius: 50%; 
+                                                left: ${x}%; 
+                                                top: ${y}%; 
+                                                opacity: 0.4;
+                                                box-shadow: 0 0 8px currentColor;
+                                                animation: float-demo ${Math.random()*3+2}s infinite ease-in-out ${delay}s;
+                                            "></div>
+                                        `);
+                                    }
+                                </script>
+                            </div>
+                        </div>
+
+                        <!-- UI Overlay -->
+                        <div style="position: absolute; top: 20px; left: 20px; display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 10px; height: 10px; background: #10b981; border-radius: 50%; animation: pulse-demo 2s infinite;"></div>
+                            <span style="font-family: var(--font-mono); font-size: 0.7rem; color: #fff; letter-spacing: 2px;">LIVE CAMERA FEED: READY</span>
+                        </div>
+
+                        <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                            <p style="font-family: var(--font-mono); font-size: 0.75rem; color: #fff; margin-bottom: 1rem;">Mídia Pipe Hand Tracking v4.2</p>
+                            <button class="btn btn-primary" onclick="openDemo()" style="font-size: 0.8rem; padding: 0.6rem 1.5rem;">INICIAR DEMO INTERATIVA</button>
+                        </div>
+
+                        <!-- Scanlines Effect -->
+                        <div style="position: absolute; inset: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02)); background-size: 100% 4px, 3px 100%; pointer-events: none;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                @keyframes float-demo {
+                    0%, 100% { transform: translate(0, 0) scale(1); }
+                    50% { transform: translate(30px, -30px) scale(1.3); }
+                }
+                @keyframes pulse-demo {
+                    0% { opacity: 1; transform: scale(1); }
+                    50% { opacity: 0.5; transform: scale(1.1); }
+                    100% { opacity: 1; transform: scale(1); }
+                }
+                @keyframes rotate-demo {
+                    from { transform: translate(-50%, -50%) rotate(0deg); }
+                    to { transform: translate(-50%, -50%) rotate(360deg); }
+                }
+            </style>
 
             <footer style="padding: 4rem 0; border-top: 1px solid var(--border-color); margin-top: 4rem;">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
@@ -1120,7 +1665,7 @@
     </div>
 
     <script>
-        // Lógica de Login (Opcional - Ativar quando necessário)
+        // Lógica de Login
         const setupLogin = () => {
             const loginForm = document.getElementById('login-form');
             if (!loginForm) return;
@@ -1364,6 +1909,41 @@
             options: { maintainAspectRatio: false, cutout: '80%', plugins: { legend: { display: false } } }
         });
 
+        // Dashboard BFilters Chart
+        const bfMainCtx = document.getElementById('bfMainChart').getContext('2d');
+        new Chart(bfMainCtx, {
+            type: 'line',
+            data: {
+                labels: ['01/Jan', '05/Jan', '10/Jan', '15/Jan', '20/Jan', '25/Jan', '30/Jan'],
+                datasets: [
+                    {
+                        label: 'Resina',
+                        data: [450, 600, 550, 800, 700, 950, 1100],
+                        borderColor: '#0096ff',
+                        backgroundColor: 'rgba(0, 150, 255, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Carvão',
+                        data: [300, 400, 380, 500, 450, 600, 750],
+                        borderColor: '#1e293b',
+                        backgroundColor: 'rgba(30, 41, 59, 0.05)',
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: { legend: { display: true, labels: { color: '#64748b', font: { size: 10 } } } },
+                scales: {
+                    y: { display: true, grid: { color: '#f1f5f9' }, ticks: { color: '#94a3b8', font: { size: 10 } } },
+                    x: { display: true, grid: { display: false }, ticks: { color: '#94a3b8', font: { size: 10 } } }
+                }
+            }
+        });
+
         // Dynamic Logo & Colors Logic
         const logoSvg = document.getElementById('logoSvg');
         const dashboard = document.querySelector('.dashboard-fake');
@@ -1415,7 +1995,32 @@
 
             }, 500);
         }, 3000);
+
+        // Particle Demo Modal Logic
+        function openDemo() {
+            const modal = document.getElementById('demo-modal');
+            const iframe = document.getElementById('demo-iframe');
+            iframe.src = 'Particle/index.html';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDemo() {
+            const modal = document.getElementById('demo-modal');
+            const iframe = document.getElementById('demo-iframe');
+            iframe.src = ''; 
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     </script>
+
+    <!-- Particle Demo Modal -->
+    <div id="demo-modal" class="modal-overlay" style="z-index: 2000;">
+        <div class="modal-content" style="max-width: 95vw; width: 1200px; height: 85vh; padding: 0; overflow: hidden; background: #000; border: 1px solid var(--accent); box-shadow: 0 0 50px rgba(255, 161, 3, 0.2);">
+            <button class="modal-close" onclick="closeDemo()" style="top: 1rem; right: 1rem; z-index: 10; background: rgba(0,0,0,0.5); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1);">&times;</button>
+            <iframe id="demo-iframe" src="" allow="camera; microphone; autoplay; fullscreen; display-capture" style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+    </div>
 </body>
 
 </html>

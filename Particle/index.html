@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Partículas 3D Interativo</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://esm.sh/three@0.160.0",
+        "three/examples/jsm/": "https://esm.sh/three@0.160.0/examples/jsm/"
+      }
+    }
+    </script>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <video id="video" autoplay playsinline></video>
+    <div id="ui">
+        <h1>Partículas 3D Real-time</h1>
+        <p>Use suas mãos para interagir!</p>
+        <div id="gesture-info">Aguardando câmera...</div>
+    </div>
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
