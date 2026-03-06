@@ -407,7 +407,7 @@ model-viewer {
 }
 
 .clients-header {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
     text-align: center;
 }
 
@@ -562,7 +562,9 @@ footer {
 #services {
     padding-top: 120px !important;
     /* Force space as requested */
-}/* Contact Modal */
+}
+
+/* Contact Modal */
 .modal-overlay {
     position: fixed;
     top: 0;

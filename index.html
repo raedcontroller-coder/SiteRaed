@@ -61,9 +61,10 @@
             </div>
 
             <div class="hero-model">
-                <model-viewer src="assets/models/astronaut.glb" camera-controls auto-rotate autoplay environment-image="neutral"
-                    exposure="1" tone-mapping="aces" shadow-intensity="1" camera-orbit="45deg 55deg 20m"
-                    camera-target="0m 2m 0m" disable-zoom interaction-prompt="none" alt="Astronauta 3D">
+                <model-viewer src="assets/models/astronaut.glb" camera-controls auto-rotate autoplay
+                    environment-image="neutral" exposure="1" tone-mapping="aces" shadow-intensity="1"
+                    camera-orbit="45deg 55deg 20m" camera-target="0m 2m 0m" disable-zoom interaction-prompt="none"
+                    alt="Astronauta 3D">
                 </model-viewer>
             </div>
         </div>
@@ -177,9 +178,6 @@
                     <img src="assets/img/Empresas/Mccain.png" alt="McCain">
                 </div>
                 <div class="client-logo">
-                    <img src="assets/img/Empresas/Messier.png" alt="Messier">
-                </div>
-                <div class="client-logo">
                     <img src="assets/img/Empresas/Vivaterra.png" alt="Vivaterra">
                 </div>
                 <div class="client-logo">
@@ -213,7 +211,8 @@
                 <ul>
                     <li><a href="#">Privacidade</a></li>
                     <li><a href="#">Termos</a></li>
-                    <li><a href="propostab.html" style="opacity: 0.5; font-size: 0.7rem;"><i class="ph ph-lock-key" style="vertical-align: middle; margin-right: 4px;"></i>Acesso Restrito</a></li>
+                    <li><a href="propostab.html" style="opacity: 0.5; font-size: 0.7rem;"><i class="ph ph-lock-key"
+                                style="vertical-align: middle; margin-right: 4px;"></i>Acesso Restrito</a></li>
                 </ul>
             </div>
 
@@ -369,7 +368,7 @@
             e.preventDefault();
             const btn = contactForm.querySelector('button');
             const originalText = btn.innerText;
-            
+
             btn.innerText = 'Enviando...';
             btn.disabled = true;
 
@@ -387,12 +386,12 @@
                     btn.innerText = 'Sucesso! Respondemos em 24h';
                     btn.style.backgroundColor = '#4CAF50';
                     btn.style.boxShadow = '0 0 20px rgba(76, 175, 80, 0.4)';
-                    
+
                     const modalHeaderP = contactForm.closest('.modal-content').querySelector('.modal-header p');
                     const originalPText = modalHeaderP.innerText;
                     modalHeaderP.innerText = 'Recebemos sua mensagem! Nossa equipe entrará em contato em até 24 horas.';
                     modalHeaderP.style.color = '#4CAF50';
-                    
+
                     setTimeout(() => {
                         closeModal();
                         contactForm.reset();
