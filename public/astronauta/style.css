@@ -1,0 +1,467 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Extended+Text&display=swap');
+
+:root {
+    --bg-space: #03030c;
+    --bg-card: rgba(10, 10, 25, 0.6);
+    --cyan: #00f2ff;
+    --cyan-glow: rgba(0, 242, 255, 0.4);
+    --magenta: #b800ff;
+    --magenta-glow: rgba(184, 0, 255, 0.4);
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border-cyan: rgba(0, 242, 255, 0.2);
+    --border-bright: rgba(0, 242, 255, 0.5);
+    --font-header: 'Orbitron', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-space);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Efeito de Estrelas (CSS Puro) */
+.stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.stars {
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: 50vw 10vh #fff, 20vw 30vh #fff, 80vw 50vh #fff, 10vw 70vh #fff, 90vw 90vh #fff,
+                30vw 80vh #fff, 70vw 20vh #fff, 40vw 40vh #fff, 60vw 60vh #fff, 25vw 55vh #fff;
+    animation: animStars 50s linear infinite;
+}
+
+.stars2 {
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: 15vw 15vh rgba(0, 242, 255, 0.8), 85vw 25vh rgba(184, 0, 255, 0.8), 35vw 75vh rgba(0, 242, 255, 0.8), 65vw 85vh rgba(184, 0, 255, 0.8);
+    animation: animStars 100s linear infinite;
+}
+
+@keyframes animStars {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-2000px); }
+}
+
+/* HUD Navigation */
+.hud-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(3, 3, 12, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-cyan);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    z-index: 2000;
+    font-family: var(--font-header);
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--cyan);
+    text-shadow: 0 0 10px var(--cyan-glow);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--cyan);
+    text-shadow: 0 0 10px var(--cyan-glow);
+}
+
+.mission-timer {
+    color: var(--magenta);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    border: 1px solid var(--magenta);
+    padding: 0.4rem 1rem;
+    background: rgba(184, 0, 255, 0.1);
+    box-shadow: 0 0 10px rgba(184, 0, 255, 0.2);
+}
+
+/* Hero Section com Scroll Video */
+.hero-container {
+    height: 400vh; /* Espaço para scroll do vídeo */
+    position: relative;
+}
+
+.video-sticky-wrapper {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#v0 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Faz cobrir de ponta a ponta */
+    z-index: 10;
+    pointer-events: none;
+    filter: drop-shadow(0 0 30px var(--cyan-glow));
+}
+
+.video-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25vw;
+    font-family: var(--font-header);
+    font-weight: 900;
+    color: rgba(0, 242, 255, 0.03);
+    z-index: 1;
+    pointer-events: none;
+    letter-spacing: -5px;
+    text-align: center;
+    width: 100%;
+    text-shadow: 0 0 40px rgba(0, 242, 255, 0.08);
+}
+
+.final-astra-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Libre Barcode 39 Extended Text', system-ui;
+    font-size: 5rem;
+    color: #ffffff;
+    opacity: 0; /* Começa invisível */
+    z-index: 15; /* Acima do vídeo (z-index: 10) */
+    pointer-events: none;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    text-align: center;
+    width: 100%;
+}
+
+.hero-content {
+    max-width: 800px;
+    z-index: 5;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.status-glow {
+    display: inline-block;
+    padding: 0.4rem 1.5rem;
+    border: 1px solid var(--cyan);
+    border-radius: 20px;
+    color: var(--cyan);
+    font-family: var(--font-header);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    background: rgba(0, 242, 255, 0.05);
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+h1 {
+    font-family: var(--font-header);
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.cyan-text {
+    color: var(--cyan);
+    text-shadow: 0 0 15px var(--cyan-glow);
+}
+
+.subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    line-height: 1.8;
+}
+
+.btn-hud {
+    background: transparent;
+    color: var(--cyan);
+    border: 1px solid var(--cyan);
+    padding: 1rem 2.5rem;
+    font-family: var(--font-header);
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 2px;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hud::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+}
+
+.btn-hud:hover::before {
+    left: 100%;
+}
+
+.btn-hud:hover {
+    background: rgba(0, 242, 255, 0.1);
+    box-shadow: 0 0 20px var(--cyan-glow);
+    transform: translateY(-2px);
+}
+
+/* Vitals Section (HUD Cards) */
+.vitals-section {
+    padding: 8rem 10%;
+    position: relative;
+    z-index: 10;
+    background: linear-gradient(to bottom, transparent, rgba(3, 3, 12, 0.9));
+}
+
+.section-header {
+    margin-bottom: 4rem;
+}
+
+.card-num {
+    font-family: var(--font-header);
+    font-size: 0.8rem;
+    color: var(--magenta);
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-family: var(--font-header);
+    font-size: 2.5rem;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.vitals-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.vital-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-cyan);
+    padding: 2.5rem;
+    backdrop-filter: blur(5px);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.vital-card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid var(--cyan);
+    border-left: 2px solid var(--cyan);
+}
+
+.vital-card:hover {
+    border-color: var(--cyan);
+    box-shadow: 0 0 25px rgba(0, 242, 255, 0.15);
+    transform: translateY(-5px);
+}
+
+.vital-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1.5rem;
+}
+
+.vital-title {
+    font-family: var(--font-header);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.vital-value {
+    font-family: var(--font-header);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cyan);
+}
+
+.vital-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    width: 100%;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan-glow);
+    transition: width 1s ease-in-out;
+}
+
+.pulse {
+    animation: pulseText 1.5s infinite;
+}
+
+@keyframes pulseText {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; color: var(--magenta); }
+}
+
+.pulse-fill {
+    background: linear-gradient(90deg, var(--cyan), var(--magenta));
+}
+
+.o2-fill { background: #00ff88; }
+.temp-fill { background: #ffbb00; }
+
+/* Mission Data Table */
+.mission-data {
+    padding: 8rem 10%;
+    background: rgba(3, 3, 12, 0.95);
+    position: relative;
+    z-index: 10;
+}
+
+.specs-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.specs-table {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+    align-items: center;
+}
+
+.spec-label {
+    font-family: var(--font-header);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+}
+
+.spec-value {
+    font-family: var(--font-header);
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+/* Footer */
+.hud-footer {
+    padding: 4rem 10%;
+    background: var(--bg-space);
+    border-top: 1px solid var(--border-cyan);
+    font-family: var(--font-header);
+    font-size: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-muted);
+    position: relative;
+    z-index: 10;
+    letter-spacing: 1px;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    h1 { font-size: 3.5rem; }
+    #v0 { width: 80%; }
+}
+
+@media (max-width: 768px) {
+    .video-sticky-wrapper {
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-bottom: 5vh;
+    }
+    #v0 {
+        position: relative;
+        top: 0;
+        transform: none;
+        width: 100%;
+        max-height: 50vh;
+    }
+    .vitals-grid {
+        grid-template-columns: 1fr;
+    }
+    .hud-nav {
+        padding: 0 1rem;
+    }
+    .nav-links {
+        gap: 1rem;
+    }
+}

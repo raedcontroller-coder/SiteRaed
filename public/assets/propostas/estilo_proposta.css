@@ -1,0 +1,114 @@
+/* estilo_proposta.css */
+@font-face {
+    font-family: 'Aptos';
+    src: local('Aptos'), local('Calibri'); /* Fallback para Calibri caso Aptos não esteja instalada no sistema */
+}
+
+body {
+    font-family: 'Aptos', Calibri, sans-serif;
+    color: #000000;
+    line-height: 1.6;
+    margin: 40px;
+    font-size: 14px;
+}
+
+/* Estilos específicos para a Capa */
+.capa {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh; /* Ocupa a tela inteira */
+    text-align: center;
+    page-break-after: always; /* Garante que o sumário comece na próxima página */
+}
+
+.capa-titulo {
+    font-size: 36px;
+    color: #000000;
+    margin-bottom: 20px;
+    border-bottom: none;
+}
+
+.capa-subtitulo {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+h1, h2, h3, h4 {
+    color: #1a1a1a;
+    font-weight: 600;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 24px;
+    border-bottom: 2px solid #000000; /* Cor primária de destaque, pode ser alterada depois */
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-size: 20px;
+    color: #000000;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5em;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #000000;
+}
+
+ul, ol {
+    margin-bottom: 1.5em;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #e0e0e0;
+    margin: 2em 0;
+}
+
+blockquote {
+    border-left: 4px solid #000000;
+    padding-left: 15px;
+    color: #666;
+    font-style: italic;
+    margin-left: 0;
+}
+
+/* Força quebra de página antes de seções importantes, se necessário (ex: Cronograma ou Valores) */
+h2 {
+    page-break-after: avoid;
+}
+
+table, img {
+    page-break-inside: avoid;
+}

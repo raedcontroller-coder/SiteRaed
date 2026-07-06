@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTRONAUTA // EXPLORAÇÃO DEEP SPACE</title>
+    <meta name="description" content="Interface de monitoramento vital e telemetria da missão Deep Space.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Efeito de Estrelas no Fundo -->
+    <div class="stars-container">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+    </div>
+
+    <nav class="hud-nav">
+        <div class="logo">MISSION // ASTRA-X</div>
+        <ul class="nav-links">
+            <li><a href="#inicio">[ 01_ORBIT ]</a></li>
+            <li><a href="#vital">[ 02_VITALS ]</a></li>
+            <li><a href="#missao">[ 03_DATA ]</a></li>
+        </ul>
+        <div class="mission-timer" id="timer">T+ 00:00:00</div>
+    </nav>
+
+    <main>
+        <section id="inicio" class="hero-container">
+            <div class="video-sticky-wrapper">
+                <!-- Texto atrás do vídeo -->
+                <div class="video-bg-text">ASTRA</div>
+
+                <!-- Vídeo WebM com transparência -->
+                <video id="v0" tabindex="0" autobuffer="auto" preload="auto" muted playsinline>
+                    <source src="astro.webm" type="video/webm">
+                </video>
+
+                <!-- Texto final que aparece no frame preto -->
+                <div class="final-astra-text">ASTRA</div>
+                
+                <div class="hero-content">
+                    <div class="status-glow">SISTEMAS OPERACIONAIS // OXIGÊNIO 94%</div>
+                    <h1>DEEP SPACE<br><span class="cyan-text">EXPLORER</span></h1>
+                    <p class="subtitle">Exploração autônoma além do Cinturão de Kepler. Monitoramento em tempo real e fusão de dados de telemetria.</p>
+                    <div class="hero-actions">
+                        <a href="#vital" class="btn-hud">INICIAR SCANNER</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vital" class="vitals-section">
+            <div class="section-header">
+                <span class="card-num">SYS_MONITOR</span>
+                <h2>DADOS VITAIS DO TRAJE</h2>
+            </div>
+            <div class="vitals-grid">
+                <div class="vital-card">
+                    <div class="vital-header">
+                        <span class="vital-title">BIMENTOS CARDÍACOS</span>
+                        <span class="vital-value pulse">72 BPM</span>
+                    </div>
+                    <div class="vital-bar"><div class="bar-fill pulse-fill" style="width: 72%;"></div></div>
+                </div>
+                <div class="vital-card">
+                    <div class="vital-header">
+                        <span class="vital-title">PRESSÃO DO TRAJE</span>
+                        <span class="vital-value">1.02 ATM</span>
+                    </div>
+                    <div class="vital-bar"><div class="bar-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="vital-card">
+                    <div class="vital-header">
+                        <span class="vital-title">NÍVEL DE O2</span>
+                        <span class="vital-value">94%</span>
+                    </div>
+                    <div class="vital-bar"><div class="bar-fill o2-fill" style="width: 94%;"></div></div>
+                </div>
+                <div class="vital-card">
+                    <div class="vital-header">
+                        <span class="vital-title">TEMPERATURA INTERNA</span>
+                        <span class="vital-value">21.5°C</span>
+                    </div>
+                    <div class="vital-bar"><div class="bar-fill temp-fill" style="width: 65%;"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="missao" class="mission-data">
+            <div class="specs-container">
+                <div class="section-header">
+                    <span class="card-num">LOG_FILE</span>
+                    <h2>TELEMETRIA DA MISSÃO</h2>
+                </div>
+                <div class="specs-table">
+                    <div class="spec-row">
+                        <span class="spec-label">DISTÂNCIA DA TERRA</span>
+                        <span class="spec-value">384.400 KM</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">VELOCIDADE RELATIVA</span>
+                        <span class="spec-value">27.600 KM/H</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">RADIAÇÃO EXTERNA</span>
+                        <span class="spec-value">1.2 mSv/h</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">COMUNICAÇÃO</span>
+                        <span class="spec-value cyan-text">DELAY 1.2s</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="hud-footer">
+        <div>VECTOR DATA: UNLOCKED // AUTH: ASTRONAUT-01</div>
+        <div>&copy; 2026 ASTRA-X INTERFACE // ANTIGRAVITY</div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
