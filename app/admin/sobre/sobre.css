@@ -1,0 +1,439 @@
+/* ============================================
+   SOBRE A RAED — Immersive Culture Page
+   ============================================ */
+
+/* Container principal */
+.sobre-page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-bottom: 4rem;
+}
+
+/* Canvas Three.js — background */
+.sobre-canvas {
+  position: fixed;
+  top: 0;
+  left: 260px; /* offset da sidebar */
+  width: calc(100% - 260px);
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* Conteúdo acima do canvas */
+.sobre-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  isolation: isolate;
+}
+
+/* ---- Hero ---- */
+.sobre-hero {
+  text-align: center;
+  padding: 4rem 0 5rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sobre-hero.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Logo SVG Animado */
+.sobre-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.sobre-logo-svg {
+  width: clamp(140px, 22vw, 220px);
+  height: auto;
+  overflow: visible;
+}
+
+.sobre-logo-path {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2;
+  stroke-dasharray: 5000;
+  stroke-dashoffset: 5000;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.2));
+  animation: sobre-logo-draw 2.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards,
+             sobre-logo-fill 1s ease 2.5s forwards,
+             sobre-logo-glow 3s ease-in-out 3.5s infinite alternate;
+}
+
+@keyframes sobre-logo-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes sobre-logo-fill {
+  0% {
+    fill: transparent;
+    stroke-width: 2;
+  }
+  100% {
+    fill: #ffffff;
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 0.5;
+  }
+}
+
+@keyframes sobre-logo-glow {
+  0% {
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.05));
+  }
+  100% {
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.15));
+  }
+}
+
+.sobre-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #ffa103;
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(255, 161, 3, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 161, 3, 0.05);
+}
+
+.sobre-hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---- Section Block (Propósito / Visão) ---- */
+.sobre-section {
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sobre-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sobre-glass-card {
+  background: rgba(10, 10, 14, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.sobre-glass-card:hover {
+  border-color: rgba(255, 161, 3, 0.15);
+  box-shadow: 0 0 40px rgba(255, 161, 3, 0.05),
+              inset 0 0 40px rgba(255, 161, 3, 0.02);
+}
+
+/* Corner accent */
+.sobre-glass-card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 40px;
+  height: 40px;
+  border-top: 2px solid rgba(255, 161, 3, 0.4);
+  border-left: 2px solid rgba(255, 161, 3, 0.4);
+  border-radius: 16px 0 0 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.sobre-glass-card:hover::before {
+  opacity: 1;
+}
+
+/* Glow decorativo no fundo do card */
+.sobre-glass-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 161, 3, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.sobre-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.sobre-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.sobre-card-icon.proposito {
+  background: linear-gradient(135deg, rgba(255, 161, 3, 0.15), rgba(255, 161, 3, 0.05));
+  color: #ffa103;
+  border: 1px solid rgba(255, 161, 3, 0.2);
+}
+
+.sobre-card-icon.visao {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(96, 165, 250, 0.05));
+  color: #60a5fa;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+.sobre-card-title {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #71717a;
+  margin-bottom: 0.15rem;
+}
+
+.sobre-card-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.sobre-card-text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.65);
+  font-style: italic;
+}
+
+/* Linha decorativa entre seções */
+.sobre-divider {
+  width: 60px;
+  height: 1px;
+  margin: 0 auto 3rem;
+  background: linear-gradient(90deg, transparent, rgba(255, 161, 3, 0.4), transparent);
+}
+
+/* ---- Valores Grid ---- */
+.sobre-valores-section {
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sobre-valores-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sobre-valores-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.sobre-valores-header h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.sobre-valores-header p {
+  color: #71717a;
+  font-size: 0.9rem;
+}
+
+.sobre-valores-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.sobre-valor-card {
+  background: rgba(10, 10, 14, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.sobre-valor-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sobre-valor-card:hover {
+  border-color: rgba(255, 161, 3, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3),
+              0 0 20px rgba(255, 161, 3, 0.05);
+}
+
+/* Glow no hover */
+.sobre-valor-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 161, 3, 0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.sobre-valor-card:hover::after {
+  opacity: 1;
+}
+
+.sobre-valor-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, rgba(255, 161, 3, 0.12), rgba(255, 161, 3, 0.03));
+  color: #ffa103;
+  border: 1px solid rgba(255, 161, 3, 0.15);
+  transition: all 0.4s ease;
+}
+
+.sobre-valor-card:hover .sobre-valor-icon {
+  box-shadow: 0 0 15px rgba(255, 161, 3, 0.2);
+  background: linear-gradient(135deg, rgba(255, 161, 3, 0.2), rgba(255, 161, 3, 0.08));
+}
+
+.sobre-valor-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.sobre-valor-desc {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+}
+
+/* ---- Footer de página ---- */
+.sobre-footer {
+  text-align: center;
+  padding: 2rem 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.sobre-footer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sobre-footer-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.75rem;
+  color: #52525b;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.sobre-footer-line .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffa103;
+  animation: sobre-pulse 2s infinite ease-in-out;
+}
+
+@keyframes sobre-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ---- Responsividade ---- */
+@media (max-width: 768px) {
+  .sobre-canvas {
+    left: 0;
+    width: 100%;
+  }
+
+  .sobre-content {
+    padding: 0 1rem;
+  }
+
+  .sobre-hero {
+    padding: 2rem 0 3rem;
+  }
+
+  .sobre-hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .sobre-glass-card {
+    padding: 1.75rem;
+  }
+
+  .sobre-valores-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sobre-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
