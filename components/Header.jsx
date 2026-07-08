@@ -14,7 +14,12 @@ export default function Header({ openContactModal }) {
           <a href="#contact">CONTATO</a>
           <Link href="/calculadora">CALCULADORA</Link>
           <Link href="/login">LOGIN</Link>
-          <a href="#contact" className="btn-hitech" onClick={openContactModal}>
+          <a 
+            href="https://wa.me/5511952424741?text=Desejo%20falar%20com%20um%20Especialista" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="btn-hitech"
+          >
             Falar com Especialista
           </a>
         </nav>
