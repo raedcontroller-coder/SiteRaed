@@ -91,6 +91,8 @@ export default function QuoteTable({ quotes }) {
               <p><strong>Nome:</strong> {selectedQuote.name}</p>
               <p><strong>E-mail:</strong> {selectedQuote.email}</p>
               <p><strong>WhatsApp:</strong> {selectedQuote.whatsapp}</p>
+              {selectedQuote.instagram && <p><strong>Instagram:</strong> {selectedQuote.instagram}</p>}
+              {selectedQuote.linkedin && <p><strong>LinkedIn:</strong> {selectedQuote.linkedin}</p>}
               <p><strong>Data:</strong> {new Date(selectedQuote.createdAt).toLocaleString('pt-BR')}</p>
               <p><strong>Estimativa:</strong> R$ {selectedQuote.totalEstimated.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
             </div>

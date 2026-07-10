@@ -10,7 +10,7 @@ const calculatorData = {
   questions: [
     {
       id: 1,
-      title: "Em quais plataformas seu aplicativo estará disponível?",
+      title: "Em quais plataformas seu software estará disponível?",
       type: "options",
       is_multiple: false,
       options: [
@@ -21,7 +21,7 @@ const calculatorData = {
     },
     {
       id: 7,
-      title: "Qual a categoria principal do seu aplicativo?",
+      title: "Qual categoria para esta solução que voce esta buscando?",
       type: "options",
       is_multiple: false,
       options: [
@@ -35,7 +35,7 @@ const calculatorData = {
     },
     {
       id: 2,
-      title: "Seu aplicativo precisa receber pagamentos (cartão, pix, boleto)?",
+      title: "Seu software precisa receber pagamentos (cartão, pix, boleto)?",
       type: "options",
       is_multiple: false,
       options: [
@@ -44,18 +44,8 @@ const calculatorData = {
       ]
     },
     {
-      id: 4,
-      title: "Você vai precisar de um painel administrativo para gerenciar usuários e dados?",
-      type: "options",
-      is_multiple: false,
-      options: [
-        { label: "Sim", value: 3500.0 },
-        { label: "Não", value: 0.0 }
-      ]
-    },
-    {
       id: 3,
-      title: "Como o aplicativo vai funcionar em relação à internet?",
+      title: "Como o software vai funcionar em relação à internet?",
       type: "options",
       is_multiple: false,
       options: [
@@ -65,18 +55,20 @@ const calculatorData = {
       ]
     },
     {
-      id: 5,
-      title: "Necessita integrar com outros sistemas (APIs externas, CRMs, ERPs)?",
+      id: 4,
+      title: "E qual a urgência disso para você?\nIsso vai me ajudar a entender o momento ideal para começarmos.",
       type: "options",
       is_multiple: false,
       options: [
-        { label: "Sim", value: 6100.0 },
-        { label: "Não", value: 2100.0 }
+        { label: "Urgente - estou perdendo oportunidades ou dinheiro sem isso", value: 0 },
+        { label: "Importante - quero resolver logo, mas dá pra esperar algumas semanas", value: 0 },
+        { label: "Planejamento - estou explorando ideias sem pressa", value: 0 },
+        { label: "Estudo - quero entender o mercado antes de decidir", value: 0 }
       ]
     },
     {
       id: 6,
-      title: "O aplicativo vai usar algum destes recursos avançados?",
+      title: "O software vai usar algum destes recursos avançados?",
       type: "options",
       is_multiple: true,
       optional: true,
@@ -90,9 +82,9 @@ const calculatorData = {
     },
     {
       id: 100,
-      title: "Quase lá!\nQual é o objetivo principal do aplicativo e como ele deve funcionar na prática?",
+      title: "Quase lá!\nQual é o objetivo principal do software e como ele deve funcionar na prática?",
       type: "text",
-      placeholder: "Ex: O aplicativo vai conectar clientes a prestadores de serviço, permitindo agendamentos e pagamentos..."
+      placeholder: "Ex: O software vai conectar clientes a prestadores de serviço, permitindo agendamentos e pagamentos..."
     },
     {
       id: 101,
@@ -435,6 +427,16 @@ export default function CalculatorPage() {
                 <div className="form-group">
                   <label htmlFor="whatsapp">WhatsApp</label>
                   <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(11) 99999-9999" />
+                </div>
+                
+                <div className="form-group">
+                  <label htmlFor="instagram">Instagram</label>
+                  <input type="text" id="instagram" name="instagram" placeholder="@seu_perfil (Opcional)" />
+                </div>
+                
+                <div className="form-group">
+                  <label htmlFor="linkedin">LinkedIn</label>
+                  <input type="text" id="linkedin" name="linkedin" placeholder="URL do seu perfil (Opcional)" />
                 </div>
 
                 {state?.error && (

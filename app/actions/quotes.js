@@ -10,6 +10,8 @@ export async function submitQuote(prevState, formData) {
   const name = formData.get('name');
   const email = formData.get('email');
   const whatsapp = formData.get('whatsapp');
+  const instagram = formData.get('instagram');
+  const linkedin = formData.get('linkedin');
   const totalEstimated = parseInt(formData.get('totalEstimated'), 10);
   const selections = JSON.parse(formData.get('selections'));
 
@@ -22,6 +24,8 @@ export async function submitQuote(prevState, formData) {
       name,
       email,
       whatsapp,
+      instagram,
+      linkedin,
       totalEstimated,
       selections,
     }).returning({ id: projectQuotes.id });
