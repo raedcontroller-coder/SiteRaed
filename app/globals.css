@@ -1320,3 +1320,136 @@ footer {
     scrollbar-width: thin;
     scrollbar-color: var(--border-color) var(--bg-color);
 }
+
+/* ============================================
+   Portfolio Page
+   ============================================ */
+.portfolio-page {
+    padding-top: 80px;
+}
+
+.portfolio-hero {
+    padding: 6rem 0 4rem;
+}
+
+.portfolio-hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    letter-spacing: -0.02em;
+    margin-top: 1rem;
+    max-width: 800px;
+}
+
+.portfolio-intro {
+    margin-top: 1.5rem;
+    max-width: 600px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.portfolio-empty {
+    padding: 4rem 0 8rem;
+    color: var(--text-secondary);
+}
+
+.portfolio-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-case {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+    padding: 5rem 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.portfolio-case.reversed {
+    grid-template-columns: 0.9fr 1.1fr;
+}
+
+.portfolio-case.reversed .portfolio-case-media {
+    order: 2;
+}
+
+.portfolio-case-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.portfolio-case-logo {
+    height: 32px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    object-position: left;
+    margin-bottom: 1.5rem;
+}
+
+.portfolio-case-content h2 {
+    font-size: 2rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+}
+
+.portfolio-case-client {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.portfolio-case-content p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+}
+
+.portfolio-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.75rem;
+}
+
+.portfolio-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 9999px;
+    padding: 0.3rem 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.portfolio-cta {
+    text-align: center;
+    padding: 6rem 0 8rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.portfolio-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 900px) {
+    .portfolio-case,
+    .portfolio-case.reversed {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 3rem 1.5rem;
+    }
+
+    .portfolio-case.reversed .portfolio-case-media {
+        order: 0;
+    }
+}

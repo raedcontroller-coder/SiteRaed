@@ -24,7 +24,7 @@ export default function Home() {
     // Safety fallback just like loader.js
     const timer = setTimeout(() => {
       hideLoader();
-    }, 8000);
+    }, 3000);
     return () => clearTimeout(timer);
   }, []);
 

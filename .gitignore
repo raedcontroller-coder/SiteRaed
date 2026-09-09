@@ -40,3 +40,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 conhecimento/
+
+# source material (decks, docs, raw exports) — not needed to run/build the site
+/*.pptx
+/*.ppt
+/*.doc
+/*.docx
+/*.pdf
+/ProjetosRaed/

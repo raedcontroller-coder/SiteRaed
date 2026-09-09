@@ -49,6 +49,10 @@ export default async function AdminLayout({ children }) {
             <i className="ph ph-file-text" style={{ fontSize: '1.15rem' }}></i>
             Propostas Comerciais
           </Link>
+          <Link href="/admin/portfolio">
+            <i className="ph ph-briefcase" style={{ fontSize: '1.15rem' }}></i>
+            Portfólio
+          </Link>
           <Link href="/admin/sobre">
             <i className="ph ph-buildings" style={{ fontSize: '1.15rem' }}></i>
             Sobre a Raed

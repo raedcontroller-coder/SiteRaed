@@ -10,6 +10,25 @@ export default function Hero({ onVideoLoaded }) {
   const videoBgTextRef = useRef(null);
   const heroTitleRef = useRef(null);
 
+  // Video ready notification.
+  // The <video> is present in the server-rendered HTML, so the browser can start
+  // loading it (and fire "loadedmetadata") before React finishes hydrating and
+  // attaches the onLoadedMetadata handler. That race means the JSX event prop
+  // alone can miss the event and always fall through to the safety timeout.
+  // Checking readyState first covers the case where it already fired.
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid || !onVideoLoaded) return;
+
+    if (vid.readyState >= 1) { // HAVE_METADATA or further along
+      onVideoLoaded();
+      return;
+    }
+
+    vid.addEventListener('loadedmetadata', onVideoLoaded);
+    return () => vid.removeEventListener('loadedmetadata', onVideoLoaded);
+  }, [onVideoLoaded]);
+
   // Text Gradient
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -217,9 +236,6 @@ export default function Hero({ onVideoLoaded }) {
           preload="auto"
           muted
           playsInline
-          onLoadedData={() => {
-            if (onVideoLoaded) onVideoLoaded();
-          }}
         >
           <source src="/astronauta/astro.webm" type="video/webm" />
         </video>

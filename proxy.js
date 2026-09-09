@@ -4,7 +4,7 @@ import { jwtVerify } from 'jose';
 const secretKey = process.env.SESSION_SECRET || 'chave_super_secreta_raed';
 const key = new TextEncoder().encode(secretKey);
 
-export async function middleware(request) {
+export async function proxy(request) {
   const session = request.cookies.get('session')?.value;
 
   // Rotas que queremos proteger

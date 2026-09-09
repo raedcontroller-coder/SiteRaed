@@ -14,6 +14,7 @@ export default function Footer() {
         <div className="footer-col">
           <h4>Empresa</h4>
           <ul>
+            <li><Link href="/portfolio">Portfólio</Link></li>
             <li><Link href="/calculadora">Calculadora de Projetos</Link></li>
             <li><a href="#">Sobre Nós</a></li>
             <li><a href="#">Carreiras</a></li>

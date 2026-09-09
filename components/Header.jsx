@@ -11,6 +11,7 @@ export default function Header({ openContactModal }) {
         </Link>
         <nav className="nav-links">
           <a href="#services">NOSSOS SERVIÇOS</a>
+          <Link href="/portfolio">PORTFÓLIO</Link>
           <a href="#contact">CONTATO</a>
           <Link href="/calculadora">CALCULADORA</Link>
           <Link href="/login">LOGIN</Link>
