@@ -8,7 +8,7 @@ const projects = [
     title: 'Profacher',
     clientName: null,
     description:
-      'Profacher 2.0 é o ecossistema definitivo para avaliação de alta performance e integridade acadêmica. A plataforma elimina o trabalho exaustivo de correção ao aplicar Inteligência Artificial avançada capaz de avaliar desde respostas dissertativas complexas até cálculos matemáticos com desenvolvimento manuscrito, devolvendo horas valiosas aos professores.\n\nCom infraestrutura multi-tenant nativa, o Profacher permite que redes de ensino gerenciem múltiplas unidades e coordenem seu corpo docente em um ambiente centralizado e seguro. O monitoramento ao vivo dá controle total da sala de aula — sinalizando quedas de foco em tempo real — enquanto os alunos têm uma experiência de prova fluida e protegida contra quedas de energia ou conexão.',
+      'Profacher 2.0 é o ecossistema definitivo para avaliação de alta performance e integridade acadêmica. A plataforma elimina o trabalho exaustivo de correção ao aplicar Inteligência Artificial avançada capaz de avaliar desde respostas dissertativas complexas até cálculos matemáticos com desenvolvimento manuscrito, devolvendo horas valiosas aos professores.\n\nCom infraestrutura multi-tenant nativa, o Profacher permite que redes de ensino gerenciem múltiplas unidades e coordenem seu corpo docente em um ambiente centralizado e seguro. O monitoramento ao vivo dá controle total da sala de aula, sinalizando quedas de foco em tempo real, enquanto os alunos têm uma experiência de prova fluida e protegida contra quedas de energia ou conexão.',
     imageUrl: '/assets/portfolio/profacher-mockup.png',
     logoUrl: '/assets/portfolio/profacher-logo.svg',
     projectUrl: 'https://profacher.raed.world',

@@ -1341,10 +1341,138 @@ footer {
 
 .portfolio-intro {
     margin-top: 1.5rem;
-    max-width: 600px;
+    max-width: 640px;
     color: var(--text-secondary);
     font-size: 1.1rem;
     line-height: 1.6;
+}
+
+/* About / Differentiators / Process */
+.portfolio-about {
+    padding: 2rem 0 5rem;
+}
+
+.portfolio-about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.portfolio-about-block h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.portfolio-about-block p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.portfolio-differentiators {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 3rem;
+}
+
+.portfolio-diff-item i {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.portfolio-diff-item p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.portfolio-process {
+    padding: 5rem 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.portfolio-process h2 {
+    font-size: 2rem;
+    letter-spacing: -0.01em;
+    margin: 1rem 0 3.5rem;
+}
+
+.portfolio-process-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.portfolio-process-grid::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 2rem;
+    right: 2rem;
+    height: 2px;
+    background: var(--border-color);
+    z-index: -1;
+}
+
+.portfolio-process-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.portfolio-process-number {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #0a0a0a;
+    border: 1px solid var(--border-color);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--accent);
+    transition: all 0.3s ease;
+}
+
+.portfolio-process-item:hover .portfolio-process-number {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+
+.portfolio-process-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    max-width: 120px;
+    line-height: 1.5;
+}
+
+.portfolio-process-note {
+    max-width: 700px;
+    margin-top: 3rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.portfolio-cases-header {
+    padding: 5rem 0 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.portfolio-cases-header h2 {
+    font-size: 2rem;
+    letter-spacing: -0.01em;
+    margin-top: 1rem;
 }
 
 .portfolio-empty {
@@ -1451,5 +1579,25 @@ footer {
 
     .portfolio-case.reversed .portfolio-case-media {
         order: 0;
+    }
+
+    .portfolio-about-grid,
+    .portfolio-differentiators {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .portfolio-process-grid {
+        flex-wrap: wrap;
+        row-gap: 2rem;
+        justify-content: flex-start;
+    }
+
+    .portfolio-process-grid::before {
+        display: none;
+    }
+
+    .portfolio-process-item {
+        flex: 0 0 calc(50% - 0.5rem);
     }
 }
