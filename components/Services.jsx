@@ -3,7 +3,7 @@ export default function Services() {
     <section id="services" className="container">
       <div className="section-header">
         <span className="mono-tag">Nossos Serviços</span>
-        <h2>Soluções High-End</h2>
+        <h2>Engenharia de Software & Inteligência Artificial</h2>
       </div>
 
       <div className="services-grid">
