@@ -4,6 +4,8 @@ import { desc } from 'drizzle-orm';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Cases & Portfólio de Software e Inteligência Artificial',
   description: 'Conheça os produtos de software, SaaS, Voice AI e sistemas de inteligência artificial desenvolvidos sob medida pela Raed para empresas de alto impacto.',

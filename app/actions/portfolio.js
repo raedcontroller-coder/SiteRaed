@@ -42,6 +42,7 @@ export async function createPortfolioProject(prevState, formData) {
     return { error: 'Erro ao salvar o projeto.' };
   }
 
+  revalidatePath('/portfolio');
   revalidatePath('/admin/portfolio');
   redirect('/admin/portfolio');
 }
@@ -80,6 +81,7 @@ export async function updatePortfolioProject(id, prevState, formData) {
     return { error: 'Erro ao atualizar o projeto.' };
   }
 
+  revalidatePath('/portfolio');
   revalidatePath('/admin/portfolio');
   redirect('/admin/portfolio');
 }
@@ -95,6 +97,7 @@ export async function deletePortfolioProject(id) {
     return { error: 'Erro ao deletar o projeto.' };
   }
 
+  revalidatePath('/portfolio');
   revalidatePath('/admin/portfolio');
   redirect('/admin/portfolio');
 }
